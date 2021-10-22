@@ -1,1 +1,1 @@
-# edge-computing-web-exploration
+# Client-Edge-Cloud coordination Use Cases and Requirements
