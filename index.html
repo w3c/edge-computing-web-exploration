@@ -68,7 +68,7 @@
 <body>
     <section id='abstract'>
         <p>
-        This document introduces the use cases and requriments of client, edge, cloud coordination mechanism and its standardization. 
+        This document introduces the use cases and requirements of client, edge, cloud coordination mechanism and its standardization. 
         </p>
     </section>
     <section id='sotd'>
@@ -92,8 +92,8 @@
 
         <p>
           To improve the client side application's performance, there is a trend to offload computing intensive work to the edge cloud, such as cloud app, cloud gaming etc.
-          However, current approch could be further optimized if there is a mechanism for Client-Edge-Cloud coordination.
-          This document discusses the use cases and requriments of Client-Edge-Cloud coordination mechanism and its standardization.
+          However, current approach could be further optimized if there is a mechanism for Client-Edge-Cloud coordination.
+          This document discusses the use cases and requirements of Client-Edge-Cloud coordination mechanism and its standardization.
         </p>
 
         <p>
@@ -119,7 +119,7 @@
           </p>
         <li>Hybrid application</li>
           <p>
-            Hybrid application refers to the application whose main task includes both rendering intesive work and computing intensive work. For example, morden e-commerce mobile application 
+            Hybrid application refers to the application whose main task includes both rendering intensive work and computing intensive work. For example, morden e-commerce mobile application 
             leverage machine learning inference in the client side for AR tpye user experience. At the same time, the e-commerce mobile application needs to fetch dynamic content based
             on uesr preference.
           </p>
@@ -172,8 +172,40 @@
         <section>
           <h3>VR/AR</h3>
           <p>
-            VR/AR devices such as VR/AR glasses normally has limitted hardware resources, so it is preferred to offload the computing intensive task to the edge for acceleration and
+            VR/AR devices such as VR/AR glasses normally has limited hardware resources, so it is preferred to offload the computing intensive task to the edge for acceleration and
             reducing delay since the edge server is deployed near the location of the user.
+          </p>
+        </section>
+
+
+        <section>
+          <h3>Professional Web-based media production</h3>
+          <p>
+            Processing and rendering media is a complex task. For example, a video editing application needs to do image processing, video editing, audio editing, etc. So it has high performance requirements.
+          </p>
+
+          <p>
+            Professional Web-based media production relies on web-based media editing tools heavily which can be used to do AI Cutting, AI Editing, AI Transcoding and publish videos to the cloud. Since the edge cloud has more powerful computing power and close to user's location,  by offloading the expensive rendering process to the edge, the web apps can render media more quickly and provide better user experience.
+          </p>
+
+          <figure>
+            <img alt="CloudApp" src="images/web_based_media.png" width="600">
+            <figcaption>
+              Web-based media production
+            </figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h3>Cloud Gaming</h3>
+          <p>
+            Cloud gaming is a game mode based on cloud computing. Under the operation mode of cloud game, all games are running on the cloud side, and the game images are compressed and transmitted to users by video stream through the network after rendering. The cloud gaming user can receive the game video stream and send control commands to the cloud to control the game.
+          </p>
+
+          <p>Taking Click-and-Play scenario for example, since all the rendering and control commands are offloaded to the edge, the cloud game user don't need to install the game locally, just click the game and then play with it smoothly. </p>
+
+          <p>
+          By offloading native games to the edge and making full use of the computing power and low-latency network, the cloud gaming can provide more smoother experience.
           </p>
         </section>
 
@@ -181,12 +213,12 @@
         <section>
           <h3>Machine learning </h3>
           <p>
-            Machine larning inference can be done in the client side to reduce latency. W3C is working on <a href="https://www.w3.org/groups/wg/webmachinelearning">WebNN</a>  standard that 
+            Machine learning inference can be done in the client side to reduce latency. W3C is working on <a href="https://www.w3.org/groups/wg/webmachinelearning">WebNN</a>  standard that 
             allows client side developers to leverage the machine learning acceleration hardwares reside in the client side devices.
           </p>
 
           <p>
-            However, since the edge cloud is located near to the client and have more powerfull hardware resources, it is also possbile to offload the machine learning inference task to the edge.
+            However, since the edge cloud is located near to the client and have more powerful hardware resources, it is also possible to offload the machine learning inference task to the edge.
           </p>
         </section>
 
@@ -203,17 +235,61 @@
     </section>
     <section>
       <h2>Gap Analysis</h2>
+
+      <section>
+        <h2>Common approaches for offloading</h2>
+        <p>
+          Currently, there are two common approaches for offloading. One is to send the codes in the request from the client to the edge server, the other is to fetch the codes from inner file repositories on edge and execute them. They all work fine, but both approaches have some downsides.
+  
+          <li>Sending codes from client to edge</li>
+  
+          <p>In this approach, the client sends the local codes to the edge and execute the codes on the edge side. The downside is obvious, since more data is transferred and it may cause network latency.Handling more data will also put more strain on the resource-restricted end device. Meanwhile, some codes are sensitive, data security is also an big issue.  </p>
+  
+          <li>Fetching codes from file repositories and executing on edge</li>
+          <figure>
+            <img alt="CloudApp" src="images/edge_fetching_codes.png" width="600">
+            <figcaption>
+              Fetching codes from inner file repositories
+            </figcaption>
+          </figure>
+  
+          <p>In this approach, The client leverages user-defined offloading library to send proper params to the offloading server and the server will fetch specified codes from inner repositories and then execute the codes.</p>
+  
+          <p>The downside of this approach is that additional file repositories are needed and the developers have to upload the codes to the repository and make sure the local and the edge side have the same version codes. </p>
+
+          <p>Meanwhile, since the offloading library plays an import role in offloading, developers should be reliable for  creating a robust offloading policy to discovery and connect with edge nodes, decide which parts of the codes can be offloaded and the time to offload. This will put more strain on the developer and affect the overall programming experience and the productivity.</p>
+          
+      </section>
+
+
+      <section>
+          <h2>Conclusion</h2>
+          <p>
+              The two approaches discussed above are mostly similar. The main difference is the way the codes are sent to the edge. However, except for those downsides mentioned, some common issues or pain points are still remained and needed to be addressed.
+
+              <ul>
+                <li>Discrepancies between client runtime and edge runtime may cause running failures, as well as the runtime differences between edge node and edge node.So an unified runtime is needed to take into consideration. WebAssembly runtime may be good choice.</li>
+                <li>Capabilities for discovering and connecting with edge nodes is needed. </li>
+                <li>Some parts of the program might be sensitive, and the developer might not want it to be sent over the internet.Capabilities for developers to configure which parts can be offloaded is needed.</li>
+                <li>When certain condition meets, for example, if there is no edge server in proximity to the user or the internet is lost, codes should be executed locally instead of offloaded. That's to say, the developer will know what might be offloaded to a server but does not need to decide or care about when it is offloaded. </li>
+                <li>Security and privacy are important, secure communication mechanisms are needed.</li>
+              </ul>
+          </p>
+      </section>
+
     </section>
+
+
     <section>
       <h2>Requirements</h2>
       <p>
-        The requriments that was derived from the use cases are listed bellow.
+        The requirements that was derived from the use cases are listed bellow.
       </p>
 
         <table>
           <tbody>
             <tr>
-              <th>Requriments</th>
+              <th>Requirements</th>
               <th>Related Use Cases</th>
             </tr>
             
@@ -234,7 +310,7 @@
     <section>
       <h2>Architecture Proposals</h2>
       <p>
-        This document proposes different architecures that address the needs identified above.</p>
+        This document proposes different architectures that address the needs identified above.</p>
 
       <section>
         <h3>Seamless code sharing across client/edge/cloud</h3>
@@ -243,7 +319,7 @@
       </p>
 
         <p>
-          The proposed high level architecure is shown in the following figure:
+          The proposed high level architectures is shown in the following figure:
         </p>
 
         <figure>
