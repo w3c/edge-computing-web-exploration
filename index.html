@@ -218,14 +218,74 @@
             </tr>
             
             <tr>
-              <td>R1: Client should be able to offload computing intensive work to the edge cloud. </td>
+              <td>R1: Client Offload.  Client should be able to offload computing intensive work to an edge resource.
+                </td>
               <td>Use case 2.1, 2.2, 2.3, 2.4, 2.5; </td> 
             </tr>
 
             <tr>
-              <td>R2: The edge cloud should be able to handover computing intensive work back to the client.</td>
+              <td>R2a: Application-Directed Migration.  
+                  The application should be able to explictly manage migration of work between computing resources.
+                  This may include temporarily running a workload on multiple computing
+                  resources to hide transfer latency.
+              </td>
+              <td>Use case (refs TBD);</td>
+            </tr>
+            <tr>
+              <td>R2b: Live Migration.  The edge cloud should be able to transparently migrate live work between computing resources.
+                This includes between edge resources, cloud resources, and back to the client, as necessary.
+                If the workload is stateful, this includes state capture and transfer.</td>
               <td>Use case 2.1,2.2, 2.5;</td>
             </tr>
+              
+            <tr>
+              <td>R3: Discovery.  A client should be able to dynamically enumerate available edge resources.</td>
+              <td>Use case (refs TBD);</td>
+            </tr>
+              
+            <tr>
+              <td>R4: Selection.  A client should be able to select between available resources, including making
+                  a decision about whether offload is appropriate (e.g. running on the client may be the best choice).
+                  This selection may be automatic or application-directed, and may require metadata or measurements
+                  of the performance and latency of edge resources, and may be static or dynamic.
+                  To do: perhaps break variants down into separate sub-requirements.
+                </td>
+              <td>Use case (refs TBD);</td>
+            </tr>
+              
+            <tr>
+              <td>R5: Packaging.  A workload should be packaged so it can be executed on available edge resources.
+                Note: this means either platform independence OR a means to negotiate which workloads can run where.</td>
+              <td>Use case (refs TBD);</td>
+            </tr>
+              
+            <tr>
+              <td>R6: Persistence.  It should be possible for a workload to be run "in the background", possibly
+                event-driven, even if the client is not active.  This also implies lifetime management (cleaning
+                up workloads under some conditions, such as if the client has not connected for a certain amount
+                of time, etc.)</td>
+              <td>Use case (refs TBD);</td>
+            </tr>
+              
+            <tr>
+              <td>R7: Security and Privacy.  The client should be able to control and protect the data used
+                by an offloaded workload.
+                Note: this may result in constraints upon the selection of offload targets, but 
+                it also means data needs to be protected in transit, at rest, etc.</td>
+              <td>Use case (refs TBD);</td>
+            </tr>
+              
+            <tr>
+              <td>R8: Resource Management.  The client should be able to control the use of resources by an
+                  offloaded workload on a per-application basis.
+                Note: If an edge resource has a usage charge, for example, a client may want to set
+                quotas on offload, and some applications may need more resources than others.
+                This may also require a negotiation, e.g. a workload may have minimum requirements,
+                making offload mandatory on limited clients.
+                </td>
+              <td>Use case (refs TBD);</td>
+            </tr>
+          
           
           </tbody>
         </table>
