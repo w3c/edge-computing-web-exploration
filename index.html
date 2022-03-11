@@ -172,9 +172,17 @@
         <section>
           <h3>VR/AR</h3>
           <p>
-            VR/AR devices such as VR/AR glasses normally has limitted hardware resources, so it is preferred to offload the computing intensive task to the edge for acceleration and
+            VR/AR devices such as VR/AR glasses normally has limited hardware resources, so it is preferred to offload the computing intensive task to the edge for acceleration and
             reducing delay since the edge server is deployed near the location of the user.
           </p>
+	  <p>
+	  Note: this could be generalized to "low-latency tasks".  Some other examples might include 
+	  game physics simulation or CAD tools (in a business environment).  The latter might add confidentiality
+	  constraints (a business user may want to offload to on-premises computers).
+	  We may also want to clarify that this pattern is for local communication to/from the client.
+	  See also "Streaming Acceleration", where the communication is in-line with an existing network
+	  connection.
+	  </p>
         </section>
 
 
@@ -240,7 +248,60 @@
           </p>
         </section>
     
-    </section>
+      <section>
+          <h3>Persistent tasks</h3>
+          <p>
+	  In some cases it may be desireable to a task from a browser that continues to run even when the 
+	  browser application is not active.  This could be used to monitor a condition for example and send
+	  a notification when that condition is met.  As a sub-category of this use case, the offloaded task
+	  might be used to monitor IoT devices and instead of or in addition to sending a notification, it
+	  might be used for automation. 
+	  Such an offloaded task might also be used to execute long-running computational
+	  tasks such as machine learning or data indexing.
+          </p>
+	  <p>
+	  Persistent tasks require a mechanism to manage their lifetime using expiry dates or explicit controls.
+	  In the case of applying this to IoT orchestration, there is also the issue of granting access rights
+	  to such offloaded tasks, for example access to a LAN, to specific IoT devices on that LAN, and to the 
+	  data they generate.
+	  </p>
+        </section>
+
+        <section>
+          <h3>Streaming Acceleration</h3>
+
+          <p>In the case of video acceleration, we may want to offload work to a location with both
+	  compute performance that is already on the network path.  Specifically, consider a low-performance
+	  client that wants to compress video or do background removal as part of a teleconference.
+	  It could connect over a local high-performance wireless network to a local edge computer (perhaps
+	  an enhanced ISP gateway box) that would then perform the video processing and forward the processed
+	  video to the network.
+	  </p>
+	  <p>
+	  We may also want to clarify that this pattern is for communication  in-line with an existing
+	  network.
+	  See also "VR/AR" (should be generalized), where the communication is to/from the offload target.
+	</section>
+
+	<section>
+	  <h3>Robot Navigation Acceleration</h3>
+	  <p>
+	  Consider a robot navigating in a home using Visual SLAM.  In this case the robot has limited
+	  performance due to cost and power constraints.  So it wishes to offload the video processing work
+	  to another computer.  However, the video is sensitive private data so the user would prefer that
+	  it does not leave the user's premises, and would like to offload the processing to an existing
+	  desktop computer or an enhanced gateway.  Latency may also be a concern (the robot needs the 
+	  results immediately to make navigation decisions, for example to avoid a wire or other obstacle
+	  on the floor).
+	  </p>
+	  <p>
+	  Note: in general, there are other opportunities for IoT devices to want to offload work to another
+	  computer.  Video processing however is of special interest because of its high data and processing
+	  requirements and privacy constraints.
+	  </p>
+	</section>
+        
+
     <section>
       <h2>Gap Analysis</h2>
     </section>
