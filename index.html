@@ -209,6 +209,46 @@
         </section>
 
         <section>
+          <h3>Online Video Conference</h3>
+          <p>
+            For online video conference application, the online video conference system provides realtime translation and subtitles service. This will use AI technology and it is
+            computing intensive. Also, the real time translation service is very delay sensitive. 
+          </p>
+          <p>
+            The online video conference application could be installed on PC terminals or mobile terminals.
+            For PC terminals, there is enough computing resources and enough disk storage to allow the installation of online video conference application. In this case, the computing
+            intensive work could be done in the PC terminal and providing ultra-low latency user experience.
+          </p>
+
+          <p>
+            For mobile terminals, there is limited disk storage and limited computing capability, it is not possbile to run the computing intensive task on the mobile terminals. In this case,
+            the computing intensive task could be offloaded to the edge and then providing ultra-low latency user experience.
+          </p>
+
+          <p>
+            It is preferred that in this use case the online video conference application can offload the computing intensive task according to the terminal capability and edge resources availability.
+            The online video conference service provider can provide consistent user experience on different terminals.
+          </p>
+        </section>
+
+        <section>
+          <h3>Image Processing</h3>
+          <p>
+            For some mobile image processing applications, it is required to use AI algorithm for the image analysis and processing. It is normally need NPU chipset on the terminals for better performance.
+            For the terminals that without NPU chipset, it is preferred to offload the AI computing intensive task to the edge and this will provide a consistent user experience on different terminals.
+          </p>
+        </section>
+
+        <section>
+          <h3>Automatic License Plate Recognition</h3>
+          <p>
+            For automatic license plate recognition applications, offline processing can provide 90% recognition rate. Online processing on the edge will improve the recognition rate to 99%. 
+            It is preferred to offload the license plate recognition computing intensive task to edge when the network connection is stable and if the network condition is not stable or broken, the offloaded computing
+            intensive task could move back to the terminals to guarantee the availability of the service.
+          </p>
+        </section>
+    
+      <section>
           <h3>Persistent tasks</h3>
           <p>
 	  In some cases it may be desireable to a task from a browser that continues to run even when the 
@@ -261,7 +301,7 @@
 	  </p>
 	</section>
         
-    </section>
+
     <section>
       <h2>Gap Analysis</h2>
     </section>
