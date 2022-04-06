@@ -32,7 +32,8 @@
             previousPublishDate: "2021-05-31",
             previousMaturity: "draft",
             copyrightStart: "2021",
-            edDraftURI: "",
+            edDraftURI: "https://w3c.github.io/edge-computing-web-exploration/",
+            github: "https://github.com/w3c/edge-computing-web-exploration",
 
             shortName: "client-edge",
             noRecTrack: true,
@@ -54,11 +55,41 @@
                 name: "Jingyu Yang",
                 companyURL: "http://www.alibabagroup.com/en/global/home",
                 company:"Alibaba Group"
+              },
+
+              {
+                name: "Michael McCool ",
+                companyURL: "https://www.intel.com/",
+                company:"Intel"
+              },
+
+              {
+                name: "Wenming Wang",
+                companyURL: "https://www.bytedance.com/",
+                company:"ByteDance"
+              },
+
+              {
+                name: "Dian Peng",
+                companyURL: "https://www.bytedance.com/",
+                company:"ByteDance"
+              },
+
+              {
+                name: "Song Xu",
+                companyURL: "https://www.chinamobileltd.com",
+                company:"China Mobile"
+              },
+
+              {
+                name: "Lei Zhao",
+                companyURL: "https://www.chinamobileltd.com",
+                company:"China Mobile"
               }
             
             ],
 
-            group: "",
+            group: "web-networks",
             wgPublicList: "",
 
         };
@@ -154,18 +185,16 @@
             <figcaption>
               Cloud App Architecture
             </figcaption>
-          </figure>
-
+          </figure> 
         </section>
 
         <section>
-          <h3>Connected vehicles/Self-driving</h3>
+          <h3>Connected Vehicles/Self-driving Cars</h3>
           <p>
             Connected vehicles/self-driving cars normally have applictions running on the vehicles. For example, the applications may include Apps for entertainment, navigation ect or for 
             functionalities. Similar with cloud app use cases, some of those applications can be offloaded to the edge cloud. Due to the mobility of the vehicles, other factors, such as the 
             stability of network connection need to be considered when offloading. 
           </p>
-
         </section>
 
 
@@ -175,19 +204,32 @@
             VR/AR devices such as VR/AR glasses normally has limited hardware resources, so it is preferred to offload the computing intensive task to the edge for acceleration and
             reducing delay since the edge server is deployed near the location of the user.
           </p>
-	  <p>
-	  Note: this could be generalized to "low-latency tasks".  Some other examples might include 
-	  game physics simulation or CAD tools (in a business environment).  The latter might add confidentiality
-	  constraints (a business user may want to offload to on-premises computers).
-	  We may also want to clarify that this pattern is for local communication to/from the client.
-	  See also "Streaming Acceleration", where the communication is in-line with an existing network
-	  connection.
-	  </p>
+          <p>
+          Note: this could be generalized to "low-latency tasks".  Some other examples might include 
+          game physics simulation or CAD tools (in a business environment).  The latter might add confidentiality
+          constraints (a business user may want to offload to on-premises computers).
+          We may also want to clarify that this pattern is for local communication to/from the client.
+          See also "Streaming Acceleration", where the communication is in-line with an existing network
+          connection.
+          </p>
+        </section>
+
+        <section>
+              <h3>Cloud Gaming</h3>
+                <p>
+                  Cloud gaming is a game mode based on cloud computing. Under the operation mode of cloud game, all games are running on the cloud side, and the game images are compressed and transmitted to users by video stream through the network after rendering. The cloud gaming user can receive the game video stream and send control commands to the cloud to control the game.
+                </p>
+
+                <p>Taking Click-and-Play scenario for example, since all the rendering and control commands are offloaded to the edge, the cloud game user don't need to install the game locally, just click the game and then play with it smoothly. </p>
+
+                <p>
+                By offloading native games to the edge and making full use of the computing power and low-latency network, the cloud gaming can provide more smoother experience.
+                </p>
         </section>
 
 
         <section>
-          <h3>Professional Web-based media production</h3>
+          <h3>Professional Web-based Media Production</h3>
           <p>
             Processing and rendering media is a complex task. For example, a video editing application needs to do image processing, video editing, audio editing, etc. So it has high performance requirements.
           </p>
@@ -204,64 +246,46 @@
           </figure>
         </section>
 
-        <section>
-          <h3>Cloud Gaming</h3>
-          <p>
-            Cloud gaming is a game mode based on cloud computing. Under the operation mode of cloud game, all games are running on the cloud side, and the game images are compressed and transmitted to users by video stream through the network after rendering. The cloud gaming user can receive the game video stream and send control commands to the cloud to control the game.
-          </p>
-
-          <p>Taking Click-and-Play scenario for example, since all the rendering and control commands are offloaded to the edge, the cloud game user don't need to install the game locally, just click the game and then play with it smoothly. </p>
-
-          <p>
-          By offloading native games to the edge and making full use of the computing power and low-latency network, the cloud gaming can provide more smoother experience.
-          </p>
-        </section>
-
-
-        <section>
-          <h3>Machine learning </h3>
-          <p>
-            Machine learning inference can be done in the client side to reduce latency. W3C is working on <a href="https://www.w3.org/groups/wg/webmachinelearning">WebNN</a>  standard that 
-            allows client side developers to leverage the machine learning acceleration hardwares reside in the client side devices.
-          </p>
-
-          <p>
-            However, since the edge cloud is located near to the client and have more powerful hardware resources, it is also possible to offload the machine learning inference task to the edge.
-          </p>
-        </section>
-
-
-        <section>
-          <h3>High availability application</h3>
-
-          <p>
-            For the applications which offload some parts of its functionalities to the edge cloud, if the edge cloud is not available due to UE mobility or other reasons,
-            it is preferred that the functionalities could be handed over back to the client. More complex rules could be designed to improve the robustness of the application.
-          </p>
-        </section>
 
         <section>
           <h3>Online Video Conference</h3>
-          <p>
-            For online video conference application, the online video conference system provides realtime translation and subtitles service. This will use AI technology and it is
-            computing intensive. Also, the real time translation service is very delay sensitive. 
-          </p>
-          <p>
-            The online video conference application could be installed on PC terminals or mobile terminals.
-            For PC terminals, there is enough computing resources and enough disk storage to allow the installation of online video conference application. In this case, the computing
-            intensive work could be done in the PC terminal and providing ultra-low latency user experience.
-          </p>
+            <p>
+              For online video conference application, the online video conference system provides realtime translation and subtitles service. This will use AI technology and it is
+              computing intensive. Also, the real time translation service is very delay sensitive. 
+            </p>
+            <p>
+              The online video conference application could be installed on PC terminals or mobile terminals.
+              For PC terminals, there is enough computing resources and enough disk storage to allow the installation of online video conference application. In this case, the computing
+              intensive work could be done in the PC terminal and providing ultra-low latency user experience.
+            </p>
 
-          <p>
-            For mobile terminals, there is limited disk storage and limited computing capability, it is not possbile to run the computing intensive task on the mobile terminals. In this case,
-            the computing intensive task could be offloaded to the edge and then providing ultra-low latency user experience.
-          </p>
+            <p>
+              For mobile terminals, there is limited disk storage and limited computing capability, it is not possbile to run the computing intensive task on the mobile terminals. In this case,
+              the computing intensive task could be offloaded to the edge and then providing ultra-low latency user experience.
+            </p>
 
-          <p>
-            It is preferred that in this use case the online video conference application can offload the computing intensive task according to the terminal capability and edge resources availability.
-            The online video conference service provider can provide consistent user experience on different terminals.
-          </p>
+            <p>
+              It is preferred that in this use case the online video conference application can offload the computing intensive task according to the terminal capability and edge resources availability.
+              The online video conference service provider can provide consistent user experience on different terminals.
+            </p>
         </section>
+
+
+        <section>
+          <h3>Streaming Acceleration</h3>
+
+          <p>In the case of video acceleration, we may want to offload work to a location with both
+            compute performance that is already on the network path.  Specifically, consider a low-performance
+            client that wants to compress video or do background removal as part of a teleconference.
+            It could connect over a local high-performance wireless network to a local edge computer (perhaps
+            an enhanced ISP gateway box) that would then perform the video processing and forward the processed
+            video to the network.
+	        </p>
+          <p>
+            We may also want to clarify that this pattern is for communication  in-line with an existing
+            network.
+            See also "VR/AR" (should be generalized), where the communication is to/from the offload target.
+	      </section>
 
         <section>
           <h3>Image Processing</h3>
@@ -279,60 +303,67 @@
             intensive task could move back to the terminals to guarantee the availability of the service.
           </p>
         </section>
-    
-      <section>
-          <h3>Persistent tasks</h3>
+
+        <section>
+          <h3>Machine Learning </h3>
           <p>
-	  In some cases it may be desireable to a task from a browser that continues to run even when the 
-	  browser application is not active.  This could be used to monitor a condition for example and send
-	  a notification when that condition is met.  As a sub-category of this use case, the offloaded task
-	  might be used to monitor IoT devices and instead of or in addition to sending a notification, it
-	  might be used for automation. 
-	  Such an offloaded task might also be used to execute long-running computational
-	  tasks such as machine learning or data indexing.
+            Machine learning inference can be done in the client side to reduce latency. W3C is working on <a href="https://www.w3.org/groups/wg/webmachinelearning">WebNN</a>  standard that 
+            allows client side developers to leverage the machine learning acceleration hardwares reside in the client side devices.
           </p>
-	  <p>
-	  Persistent tasks require a mechanism to manage their lifetime using expiry dates or explicit controls.
-	  In the case of applying this to IoT orchestration, there is also the issue of granting access rights
-	  to such offloaded tasks, for example access to a LAN, to specific IoT devices on that LAN, and to the 
-	  data they generate.
-	  </p>
+
+          <p>
+            However, since the edge cloud is located near to the client and have more powerful hardware resources, it is also possible to offload the machine learning inference task to the edge.
+          </p>
         </section>
 
         <section>
-          <h3>Streaming Acceleration</h3>
+          <h3>Robot Navigation Acceleration</h3>
+            <p>
+            Consider a robot navigating in a home using Visual SLAM.  In this case the robot has limited
+            performance due to cost and power constraints.  So it wishes to offload the video processing work
+            to another computer.  However, the video is sensitive private data so the user would prefer that
+            it does not leave the user's premises, and would like to offload the processing to an existing
+            desktop computer or an enhanced gateway.  Latency may also be a concern (the robot needs the 
+            results immediately to make navigation decisions, for example to avoid a wire or other obstacle
+            on the floor).
+            </p>
+            <p>
+            Note: in general, there are other opportunities for IoT devices to want to offload work to another
+            computer.  Video processing however is of special interest because of its high data and processing
+            requirements and privacy constraints.
+            </p>
+        </section>
 
-          <p>In the case of video acceleration, we may want to offload work to a location with both
-	  compute performance that is already on the network path.  Specifically, consider a low-performance
-	  client that wants to compress video or do background removal as part of a teleconference.
-	  It could connect over a local high-performance wireless network to a local edge computer (perhaps
-	  an enhanced ISP gateway box) that would then perform the video processing and forward the processed
-	  video to the network.
-	  </p>
-	  <p>
-	  We may also want to clarify that this pattern is for communication  in-line with an existing
-	  network.
-	  See also "VR/AR" (should be generalized), where the communication is to/from the offload target.
-	</section>
 
-	<section>
-	  <h3>Robot Navigation Acceleration</h3>
-	  <p>
-	  Consider a robot navigating in a home using Visual SLAM.  In this case the robot has limited
-	  performance due to cost and power constraints.  So it wishes to offload the video processing work
-	  to another computer.  However, the video is sensitive private data so the user would prefer that
-	  it does not leave the user's premises, and would like to offload the processing to an existing
-	  desktop computer or an enhanced gateway.  Latency may also be a concern (the robot needs the 
-	  results immediately to make navigation decisions, for example to avoid a wire or other obstacle
-	  on the floor).
-	  </p>
-	  <p>
-	  Note: in general, there are other opportunities for IoT devices to want to offload work to another
-	  computer.  Video processing however is of special interest because of its high data and processing
-	  requirements and privacy constraints.
-	  </p>
-	</section>
-        
+        <section>
+          <h3>Persistent tasks</h3>
+          <p>
+              In some cases it may be desireable to a task from a browser that continues to run even when the 
+              browser application is not active.  This could be used to monitor a condition for example and send
+              a notification when that condition is met.  As a sub-category of this use case, the offloaded task
+              might be used to monitor IoT devices and instead of or in addition to sending a notification, it
+              might be used for automation. 
+              Such an offloaded task might also be used to execute long-running computational
+              tasks such as machine learning or data indexing.
+          </p>
+          <p>
+              Persistent tasks require a mechanism to manage their lifetime using expiry dates or explicit controls.
+              In the case of applying this to IoT orchestration, there is also the issue of granting access rights
+              to such offloaded tasks, for example access to a LAN, to specific IoT devices on that LAN, and to the 
+              data they generate.
+          </p>
+        </section>
+
+        <section>
+          <h3>High Availability Application</h3>
+          <p>
+            For the applications which offload some parts of its functionalities to the edge cloud, if the edge cloud is not available due to UE mobility or other reasons,
+            it is preferred that the functionalities could be handed over back to the client. More complex rules could be designed to improve the robustness of the application.
+          </p>
+        </section>  
+
+      </section>
+
 
     <section>
       <h2>Gap Analysis</h2>
@@ -397,7 +428,7 @@
             <tr>
               <td>R1: Client Offload.  Client should be able to offload computing intensive work to an edge resource.
                 </td>
-              <td>Use case 2.1, 2.2, 2.3, 2.4, 2.5; </td> 
+              <td>Use case 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10, 2.11, 2.12, 2.13; </td> 
             </tr>
 
             <tr>
@@ -406,7 +437,7 @@
                   This may include temporarily running a workload on multiple computing
                   resources to hide transfer latency.
               </td>
-              <td>Use case (refs TBD);</td>
+              <td>Use case (refs TBD) ;</td>
             </tr>
             <tr>
               <td>R2b: Live Migration.  The edge cloud should be able to transparently migrate live work between computing resources.
@@ -533,7 +564,7 @@
                 </section>
               
               <section>
-                <h3>Potential standards</h3>
+                <h3>Potential Standards</h3>
                   <li>API to load wasm code</li>
                     <p>
                       This API is used to load wasm code to the client's WebAssembly runtime, and it indicates this wasm code could be offloaded to the Edge cloud when certain condition is meet.
