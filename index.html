@@ -707,6 +707,64 @@
         </figure>
       </section>
 
+      <section>
+        <h3>Distributed Workers</h3>
+        <p>The Web already has a set of standards for managing additional
+        threads of computation managed by application 
+        code loaded into the browser: Web and Service Workers.
+        Workers already support a message-passing style of communication
+        which would allow them to execute remotely.
+        This architectural option proposes extending workers to support
+        edge computing as follows:
+        </p>
+        <ul>
+        <li>Compute Utility services would be made available on the
+            network that could provide
+            a capabilty to execute Worker payloads.
+            For fallback purposes, the client itself would also offer
+            a Compute Utility to support local execution when needed.
+            It would also be possible for the origin to host a Compute
+            Utility.  However, in general Compute Utilities could be
+            hosted at other locations, including in desktops on the LAN,
+            within a local cloud, or within edge infrastructure.
+        </li>
+        <li>Application developers would continue to use existing
+            APIs for Workers, but could optionally provide metadata about
+            performance and memory requirements which could be used to
+            select an appropriate execution target.
+        </li>
+        <li>Browsers would collect metadata about available Compute
+            Utility services, including latency and performance, and
+            would select an appropriate target for each Worker.
+            The user would have controls in the browser to control
+            this rule, including the ability to specify specific offload
+            targets or to force local execution when appropriate.
+        </li>
+        <li>Once a Compute Utility is selected, the browser would
+            automatically (transparent to the application) use the 
+            network API of the Compute Utility to load and execute the
+            Worker.  Note that in the existing Worker API, a URL of
+            a Javascript workload is provided to the Worker.  
+        </li>
+        <li>The Compute Utility itself would be responsible for downloading
+            the workload, it would not have to be downloaded to the 
+            browser and then uploaded.  Also, a WASM workload could be used,
+            bootstrapping from the standard Javascript workload.
+            In the future, other workload packaging types, such as 
+            container images, might also be supported.  In general, the
+            workload execution environment should be the same as the 
+            normal Worker execution environment.  However, access to
+            accelerators to support performance and other advanced capabilities
+            will become more important in this context.
+        </li>
+        </ul>
+
+        <figure>
+          <img alt="Distributed Worker Architecture" src="images/Distributed_Worker_Architecture.png" width="600">
+          <figcaption>
+            Proposed High Level Architecture: Distributed Workers
+          </figcaption>
+        </figure>
 
     </section>
 
