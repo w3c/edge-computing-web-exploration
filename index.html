@@ -759,10 +759,44 @@
         </li>
         </ul>
 
+        <p>
+          The proposed high level architecture is shown in the following figure.
+          The browser discovers Compute Utilities using 
+          a Discovery mechanism. Discovery services in each discovered
+          Compute Utility return metadata, which then allows the 
+          selection of a Compute Utility for each workload.
+          A Workload Managment service is then
+          used to load and run a packaged workload for the worker.
+        </p>
         <figure>
           <img alt="Distributed Worker Architecture" src="images/DW.png" width="600">
           <figcaption>
             Proposed High Level Architecture: Distributed Workers
+          </figcaption>
+        </figure>
+
+        <p>
+          The following figure has some additional details on how the 
+          various entities communicate with each other.  In this figure
+          we also introduce a "Worker Proxy" which is just a regular worker
+          that acts as an intermediary to the remote worker.
+          This proxy can also do the work of discovering and selecting
+          a suitable Compute Utility for a given workload.
+          The workload is specified as a URL to the API and
+          the selected Compute Utility does the work of actually fetching the 
+          workload.  
+          Once instantiated by the Workload Manager, the workload can
+          communicate with the application via the proxy, which can
+          also deal with any secure transport termination.
+          Finally, a set of keep-alive messages check is
+          the web application is still running. Once the web application has
+          now responded for a while, the workload is automatically shut
+          down.
+        </p>
+        <figure>
+          <img alt="Distributed Worker Process" src="images/DWflow.png" width="720">
+          <figcaption>
+            Distributed Worker Message Flow
           </figcaption>
         </figure>
 

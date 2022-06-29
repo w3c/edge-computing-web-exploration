@@ -1,0 +1,79 @@
+@startuml
+hide footbox
+
+box "Web Server"
+participant "Web Server" as WS
+end box
+
+box "Client"
+participant "Browser" as B
+participant "Application" as A
+participant "Worker Proxy" as WP
+end box
+
+box "Compute Utility 1"
+participant "Discovery Service" as DS
+participant "Workload Manager" as WM
+participant "Workload" as W
+end box
+
+box "Compute Utility 2"
+participant "Discovery Service" as DS2
+end box
+
+== open web application ==
+
+activate B
+B  -> WS: HTTP GET 
+WS -> B: HTML and JS
+B -> A: start
+activate A
+A  -> WP: new Worker(W)
+activate WP
+
+== choose utility ==
+
+WP  -> DS: Discovery 
+WP  -> DS2: Discovery 
+DS  -> WP: metadata
+DS2  -> WP: metadata
+WP  --> DS: select
+
+== workload invocation ==
+
+WP  -> WM: invoke workload W
+WM  -> WS: HTTP GET
+WS  -> WM: workload package
+WM  -> W: start workload
+activate W
+WM -> WP: workload started!
+
+== workload operational state ==
+
+A -> WP: msg: parameters
+WP -> W: msg: parameters
+W -> WP: msg: result
+WP -> A: msg: result
+
+== keep alive ==
+
+WM -> WP: still there?
+WP -> A: still there?
+A -> WP: still here
+WP -> WM: still here
+
+== close web application ==
+
+B -> A: close page
+destroy A
+deactivate B
+
+== workload timeout and shutdown ==
+WM -> WP: still there?
+WP -> A: still there?
+WM --> WP: stop waiting
+deactivate WP
+WM --> W: stop workload
+destroy W
+
+@enduml
