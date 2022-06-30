@@ -1,7 +1,7 @@
 @startuml
 hide footbox
 
-box "Web Device"
+box "Web Server"
 participant "Web Server" as WS
 end box
 
