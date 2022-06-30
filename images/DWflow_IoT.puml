@@ -1,0 +1,66 @@
+@startuml
+hide footbox
+
+box "Web Device"
+participant "Web Server" as WS
+end box
+
+box "Client"
+participant "IoT Device" as D
+end box
+
+box "Compute Utility 1"
+participant "Discovery Service" as DS
+participant "Workload Manager" as WM
+participant "Workload" as W
+end box
+
+box "Compute Utility 2"
+participant "Discovery Service" as DS2
+end box
+
+== boot device ==
+
+activate D
+
+== choose compute utility ==
+
+D  -> DS: Discovery 
+D  -> DS2: Discovery 
+DS  -> D: compute utility metadata
+DS2 -> D: compute utility metadata
+D  --> DS: select
+
+== workload invocation ==
+
+D  -> WM: invoke workload W
+WM  -> WS: HTTP GET Content-Type: text/javascript
+WS  -> WM: workload package
+WM  -> W: start workload
+activate W
+WM -> D: workload started!
+W  --> WS: (optional) bootstrap performance package
+WS --> W: WASM, container image, etc.
+W  -> D: ready!
+
+== workload operational state ==
+
+D -> W: msg: parameters
+W -> D: msg: result
+
+== keep alive ==
+
+WM -> D: still there?
+D -> WM: still here!
+
+== shutdown device ==
+
+deactivate D
+
+== workload timeout and shutdown ==
+WM -> D: still there?
+WM --> D: stop waiting
+WM --> W: stop workload
+destroy W
+
+@enduml

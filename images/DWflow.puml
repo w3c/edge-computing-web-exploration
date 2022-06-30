@@ -8,6 +8,7 @@ end box
 box "Client"
 participant "Browser" as B
 participant "Application" as A
+participant "Shim Worker" as WH
 participant "Worker Proxy" as WP
 end box
 
@@ -21,6 +22,12 @@ box "Compute Utility 2"
 participant "Discovery Service" as DS2
 end box
 
+activate WP
+activate WS
+activate DS 
+activate WM 
+activate DS2 
+
 == open web application ==
 
 activate B
@@ -28,8 +35,9 @@ B  -> WS: HTTP GET Content-Type: text/html
 WS -> B: HTML (and Javascript)
 B -> A: start
 activate A
-A  -> WP: new Worker(W)
-activate WP
+A  -> WH: new Worker(W)
+activate WH
+WH -> WP: start W
 
 == choose compute utility ==
 
@@ -51,31 +59,37 @@ activate W
 WM -> WP: workload started!
 W  --> WS: (optional) bootstrap performance package
 WS --> W: WASM, container image, etc.
-W  -> WP: ready!
+W  -> WP: msg: ready!
+WP -> WH: msg: ready!
+WH -> A: msg: ready!
 
 == workload operational state ==
 
-A -> WP: msg: parameters
-WP -> W: msg: parameters
-W -> WP: msg: result
-WP -> A: msg: result
+A -> WH: postMessage(parameters)
+WH -> WP: msg: parameters
+WP -> W: onmessage(parameters)
+W -> WP: postMessage(result)
+WP -> WH: msg: result
+WH -> A: onmessage(result)
 
 == keep alive ==
 
 WM -> WP: still there?
-WP -> A: still there?
-A -> WP: still here
-WP -> WM: still here
+WP -> WH: still there?
+WH -> WP: still here!
+WP -> WM: still here!
 
 == close web application ==
 
 B -> A: close page
-destroy A
+A -> WH: stop workers
 deactivate B
+destroy A
+destroy WH
 
 == workload timeout and shutdown ==
 WM -> WP: still there?
-WP -> A: still there?
+WP -> WH: still there?
 WM --> WP: stop waiting
 deactivate WP
 WM --> W: stop workload
