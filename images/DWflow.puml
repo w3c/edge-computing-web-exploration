@@ -24,29 +24,33 @@ end box
 == open web application ==
 
 activate B
-B  -> WS: HTTP GET 
-WS -> B: HTML and JS
+B  -> WS: HTTP GET Content-Type: text/html
+WS -> B: HTML (and Javascript)
 B -> A: start
 activate A
 A  -> WP: new Worker(W)
 activate WP
 
-== choose utility ==
+== choose compute utility ==
 
+WP  -> WS: HTTP GET Content-Type: application/metadata+jsonld
+WS  -> WP: workload metadata
 WP  -> DS: Discovery 
 WP  -> DS2: Discovery 
-DS  -> WP: metadata
-DS2  -> WP: metadata
+DS  -> WP: compute utility metadata
+DS2 -> WP: compute utility metadata
 WP  --> DS: select
 
 == workload invocation ==
 
 WP  -> WM: invoke workload W
-WM  -> WS: HTTP GET
+WM  -> WS: HTTP GET Content-Type: text/javascript
 WS  -> WM: workload package
 WM  -> W: start workload
 activate W
 WM -> WP: workload started!
+W  --> WS: (optional) fetch WASM, container image, etc.
+W  -> WP: ready!
 
 == workload operational state ==
 
