@@ -43,43 +43,13 @@
               },
 
               {
-                name: "Feiwei Lei",
-                companyURL: "http://www.alibabagroup.com/en/global/home",
-                company:"Alibaba Group"
-              },
-
-              {
-                name: "Jingyu Yang",
-                companyURL: "http://www.alibabagroup.com/en/global/home",
-                company:"Alibaba Group"
-              },
-
-              {
                 name: "Michael McCool ",
                 companyURL: "https://www.intel.com/",
                 company:"Intel"
               },
 
               {
-                name: "Wenming Wang",
-                companyURL: "https://www.bytedance.com/",
-                company:"ByteDance"
-              },
-
-              {
-                name: "Dian Peng",
-                companyURL: "https://www.bytedance.com/",
-                company:"ByteDance"
-              },
-
-              {
                 name: "Song Xu",
-                companyURL: "https://www.chinamobileltd.com",
-                company:"China Mobile"
-              },
-
-              {
-                name: "Lei Zhao",
                 companyURL: "https://www.chinamobileltd.com",
                 company:"China Mobile"
               }
@@ -365,21 +335,16 @@
             The computing intensive function is located in edge cloud. The user intercation and display function is located in the client.
           </p>
 
+          <p>
+            The advantage of Cloud App is that it can reduce the hardware cost of the client side device.
+          </p>
+
           <figure>
             <img alt="CloudApp" src="images/CloudApp.png" width="600">
             <figcaption>
               Cloud App Architecture
             </figcaption>
           </figure> 
-        </section>
-
-        <section>
-          <h3>Connected Vehicles/Self-driving Cars</h3>
-          <p>
-            Connected vehicles/self-driving cars normally have applictions running on the vehicles. For example, the applications may include Apps for entertainment, navigation ect or for 
-            functionalities. Similar with cloud app use cases, some of those applications can be offloaded to the edge cloud. Due to the mobility of the vehicles, other factors, such as the 
-            stability of network connection need to be considered when offloading. 
-          </p>
         </section>
 
 
@@ -420,11 +385,13 @@
           </p>
 
           <p>
-            Professional Web-based media production relies on web-based media editing tools heavily which can be used to do AI Cutting, AI Editing, AI Transcoding and publish videos to the cloud. Since the edge cloud has more powerful computing power and close to user's location,  by offloading the expensive rendering process to the edge, the web apps can render media more quickly and provide better user experience.
+            Professional Web-based media production relies on web-based media editing tools heavily which can be used to do AI Cutting, AI Editing, AI Transcoding and publish videos to the cloud. 
+            Since the edge cloud has more powerful computing power and close to user's location,  by offloading the expensive rendering process to the edge, the web apps can render media more quickly 
+            and provide better user experience.
           </p>
 
           <figure>
-            <img alt="CloudApp" src="images/web_based_media.png" width="600">
+            <img alt="WebMedia" src="images/web_based_media.png" width="600">
             <figcaption>
               Web-based media production
             </figcaption>
@@ -497,7 +464,10 @@
           </p>
 
           <p>
-            However, since the edge cloud is located near to the client and have more powerful hardware resources, it is also possible to offload the machine learning inference task to the edge.
+            The client side devices have different hardware capabilities. For example, some mobile phone have very limited hardware resource and do not have GPU. 
+            It is very difficult for this kind of client devices to run machine learning code on it. 
+
+            So in this scenario, it is preferred to offload machine learning code to the edge cloud. The user experience is greatly improved in this case.
           </p>
         </section>
 
@@ -550,7 +520,7 @@
       </section>
 
 
-    <section>
+    <section id="gap">
       <h2>Gap Analysis</h2>
 
       <section>
@@ -564,7 +534,7 @@
   
           <li>Fetching codes from file repositories and executing on edge</li>
           <figure>
-            <img alt="CloudApp" src="images/edge_fetching_codes.png" width="600">
+            <img alt="EdgeFetch" src="images/edge_fetching_codes.png" width="600">
             <figcaption>
               Fetching codes from inner file repositories
             </figcaption>
@@ -582,8 +552,8 @@
       <section>
           <h2>Conclusion</h2>
           <p>
-              The two approaches discussed above are mostly similar. The main difference is the way the codes are sent to the edge. However, except for those downsides mentioned, some common issues or pain points are still remained and needed to be addressed.
-
+              The two approaches discussed above are mostly similar. The main difference is the way the codes are sent to the edge. However, except for those downsides mentioned, some common issues or pain points are still remained 
+              and needed to be addressed. 
               <ul>
                 <li>Discrepancies between client runtime and edge runtime may cause running failures, as well as the runtime differences between edge node and edge node.So an unified runtime is needed to take into consideration. WebAssembly runtime may be good choice.</li>
                 <li>Capabilities for discovering and connecting with edge nodes is needed. </li>
@@ -591,6 +561,10 @@
                 <li>When certain condition meets, for example, if there is no edge server in proximity to the user or the internet is lost, codes should be executed locally instead of offloaded. That's to say, the developer will know what might be offloaded to a server but does not need to decide or care about when it is offloaded. </li>
                 <li>Security and privacy are important, secure communication mechanisms are needed.</li>
               </ul>
+          </p>
+
+          <p>
+            There is no W3C standard currently available to address the above gaps. To achieve the interoperability between different vendors, standardization is needed.
           </p>
       </section>
 
@@ -678,8 +652,7 @@
                 </td>
               <td>Use case (refs TBD);</td>
             </tr>
-          
-          
+        
           </tbody>
         </table>
     </section>
@@ -840,7 +813,7 @@
                     </p>
                 </section>
               
-              <section>
+              <section id="PotentialStandards">
                 <h3>Potential Standards</h3>
                   <li>API to load wasm code</li>
                     <p>
@@ -866,7 +839,60 @@
                       This proposal recommend that offloading policy is not standardized to allow the flexibility implementation of different vendors. 
                     </p>
               </section>
+
+              <section>
+                <h3>Conclusion & Recommendations for the Way Forward</h3>
+
+                <p>
+                  As analysed in the <a href="#gap"> gap analysis section</a> and in the <a href="#PotentialStandards">potential standards</a>  section, the proposed potential standards work is to specify a standardized 
+                  common mechanism to offload code to the edge cloud. 
+                  There may be mulitple potential solutions and some of them may be related to <a href="https://www.w3.org/wasm/">WebAssembly</a> and some may be related to webplatform APIs.
+                </p>
+
+                <p>There are basically two different approaches for the standardization:  </p>
+                  <li>Option 1: Divide the standardization work into different relevant W3C working groups. </li>
+                  <li>Option 2: Establish a new working group that focus on the standardization of this problem.</li>
+
+                <p>
+                  The disadvantage of option 1 is that if divided the work to different related working groups in W3C, it would be very difficult to maintain a unified architecture.
+                </p>
+
+                <p>
+                  The advantage of option 2 is that it would be easier to maintain a unified architeture in one working group.
+                  Considering this, it is preferred to establish a new working group (Option 2) to focus on the standardized solution development. The proposed new working group 
+                  could develop the standard solution architecture firstly. If the standard solution architecture require extension of current W3C standards, the new working group could work together with the related 
+                  working group(for example,<a href="https://www.w3.org/wasm/">WebAssembly Working Group</a> etc.) to develop the extensions. 
+               </p>
+
+               <p>
+                 The proposed next step is to draft the charter which is used to establish the proposed new working group.
+               </p>
+
+              </section>
           
+    </section>
+
+    <section>
+      <h2>Contributors</h2>
+          <p>
+            Feiwei Lei,  <a href="http://www.alibabagroup.com/en/global/home">Alibaba Group</a>
+          </p>       
+          
+          <p>
+            Jingyu Yang,  <a href="http://www.alibabagroup.com/en/global/home">Alibaba Group</a>
+          </p>    
+
+          <p>
+            Wenming Wang,  <a href="https://www.bytedance.com/">ByteDance</a>
+          </p>
+
+          <p>
+            Dian Peng,  <a href="https://www.bytedance.com/">ByteDance</a>
+          </p>
+
+          <p>
+            Lei Zhao, <a href="https://www.chinamobileltd.com">China Mobile </a>
+          </p>                              
     </section>
 
     
