@@ -1,0 +1,98 @@
+@startuml
+hide footbox
+
+box "Web Server"
+participant "Web Server" as WS
+end box
+
+box "Client"
+participant "Browser" as B
+participant "Application" as A
+participant "Shim Worker" as WH
+participant "Worker Proxy" as WP
+end box
+
+box "Compute Utility 1"
+participant "Discovery Service" as DS
+participant "Workload Manager" as WM
+participant "Workload" as W
+end box
+
+box "Compute Utility 2"
+participant "Discovery Service" as DS2
+end box
+
+activate WP
+activate WS
+activate DS 
+activate WM 
+activate DS2 
+
+== open web application ==
+
+activate B
+B  -> WS: HTTP GET Content-Type: text/html
+WS -> B: HTML (and Javascript)
+B -> A: start
+activate A
+A  -> WH: new Worker(W)
+activate WH
+WH -> WP: start W
+
+== choose compute utility ==
+
+WP  -> WS: HTTP GET Content-Type: application/metadata+jsonld
+WS  -> WP: workload metadata
+WP  -> DS: Discovery 
+WP  -> DS2: Discovery 
+DS  -> WP: compute utility metadata
+DS2 -> WP: compute utility metadata
+WP  --> DS: select
+
+== workload invocation ==
+
+WP  -> WM: invoke workload W
+WM  -> WS: HTTP GET Content-Type: text/javascript
+WS  -> WM: workload package
+WM  -> W: start workload
+activate W
+WM -> WP: workload started!
+W  --> WS: (optional) bootstrap performance package
+WS --> W: WASM, container image, etc.
+W  -> WP: msg: ready!
+WP -> WH: msg: ready!
+WH -> A: msg: ready!
+
+== workload operational state ==
+
+A -> WH: postMessage(parameters)
+WH -> WP: msg: parameters
+WP -> W: onmessage(parameters)
+W -> WP: postMessage(result)
+WP -> WH: msg: result
+WH -> A: onmessage(result)
+
+== keep alive ==
+
+WM -> WP: still there?
+WP -> WH: still there?
+WH -> WP: still here!
+WP -> WM: still here!
+
+== close web application ==
+
+B -> A: close page
+A -> WH: stop workers
+deactivate B
+destroy A
+destroy WH
+
+== workload timeout and shutdown ==
+WM -> WP: still there?
+WP -> WH: still there?
+WM --> WP: stop waiting
+deactivate WP
+WM --> W: stop workload
+destroy W
+
+@enduml
