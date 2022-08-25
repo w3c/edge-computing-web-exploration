@@ -668,7 +668,6 @@
                   to an edge resource.</td>
               <td>Use case 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10, 2.11, 2.12, 2.13; </td> 
             </tr>
-
             <tr>
               <td>Resiliency</td>
               <td>R2a: Application-Directed Migration.</td>  
@@ -690,7 +689,6 @@
                 this includes state capture and transfer.</td>
               <td>Use case 2.1,2.2, 2.5;</td>
             </tr>
-              
             <tr>
               <td>Flexibility</td>
               <td>R3: Discovery.</td>
@@ -698,7 +696,6 @@
                   edge resources.</td>
               <td>Use case (refs TBD);</td>
             </tr>
-              
             <tr>
               <td>Flexibility</td>
               <td>R4: Selection.</td>
@@ -715,7 +712,6 @@
                 </td>
               <td>Use case (refs TBD);</td>
             </tr>
-              
             <tr>
               <td>Flexibility</td>
               <td>R5: Packaging.</td>
@@ -725,8 +721,8 @@
                 negotiate which workloads can run where.</td>
               <td>Use case (refs TBD);</td>
             </tr>
-              
             <tr>
+              <td>Flexibility</td>
               <td>R6: Persistence.</td>
               <td>It should be possible for a workload to be run "in the background",
                 possibly event-driven, even if the client is not active. 
@@ -736,7 +732,6 @@
                 of time, etc.)</td>
               <td>Use case (refs TBD);</td>
             </tr>
-              
             <tr>
               <td>Security, Privacy</td>
               <td>R7: Confidentiality and Integrity</td>
@@ -747,7 +742,6 @@
               </td>
               <td>Use case (refs TBD);</td>
             </tr>
-              
             <tr>
               <td>Control</td>
               <td>R8: Resource Management.</td>
@@ -767,7 +761,65 @@
                 </td>
               <td>Use case (refs TBD);</td>
             </tr>
-        
+            <tr>
+              <td>Scalability</td>
+              <td>R9: Statelessness</td>
+              <td>It should be possible to identify workloads that
+                  are stateless so they can be run in a more scalable
+                  manner, using FaaS cloud mechanisms.
+                </td>
+              <td>Use case (refs TBD);</td>
+            </tr>
+            <tr>
+              <td>Compatibility</td>
+              <td>R10: Stateful</td>
+              <td>It should be possible to run stateful workloads,
+                  to be compatible with existing client-side 
+                  programming model expectations.
+                </td>
+              <td>Use case (refs TBD);</td>
+            </tr>
+            <tr>
+              <td>Performance</td>
+              <td>R11: Parallelism</td>
+              <td>It should be possible to run multiple workloads in
+                  parallel and/or express parallelism within a single workload.
+                </td>
+              <td>Use case (refs TBD);</td>
+            </tr>
+            <tr>
+              <td>Performance</td>
+              <td>R12: Asynchronous</td>
+              <td>The API for communicating with a running workload
+                  should be non-blocking (asynchronous) to hide the
+                  latency of remote communication and allow the 
+                  main (user interface) thread to run in parallel with the
+                  workload (even if the workload is being run on the client).
+                </td>
+              <td>Use case (refs TBD);</td>
+            </tr>
+            <tr>
+              <td>Security</td>
+              <td>R13: Sandboxing</td>
+              <td>A workload should be specified and packaged in such
+                a way that it can be run in a sandboxed environment and its
+                access to resources can be managed.
+              </td>
+              <td>Use case (refs TBD);</td>
+            </tr>
+            <tr>
+              <td>Performance, Compatibility</td>
+              <td>R14: Acceleration</td>
+              <td>A workload should have (managed) access to accelerated
+                  computing resources when appropriate, such as AI accelerators.
+                  Note: Since the availablity of these resources may vary between
+                  compute resources these need to be taken into account
+                  when estimating performance and selecting a compute
+                  resource to use for offload.  Access to such resources
+                  should use web standards, e.g. standard WASM/WASI APIs.
+                </td>
+              <td>Use case (refs TBD);</td>
+            </tr>
           </tbody>
         </table>
       </section>
