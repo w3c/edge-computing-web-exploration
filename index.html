@@ -1046,29 +1046,50 @@
               
               <section id="PotentialStandards">
                 <h3>Potential Standards</h3>
-                  <li>API to load wasm code</li>
-                    <p>
-                      This API is used to load wasm code to the client's WebAssembly runtime, and it indicates this wasm code could be offloaded to the Edge cloud when certain condition is meet.
-                      The standardization of this API is required since different WebAssembly runtime implementation should implement this API in the same way to make sure that the developers have the 
+                  <dl>
+                  <dt>JavaScript API to specify workloads:</dt>
+                    <dd>
+                      This JavaScript API is to be used by a web application 
+                      to specify a workload.
+                      It indicates this workload may be offloaded to the 
+                      edge cloud when certain conditions are meet.
+                      The standardization of this API is required 
+                      since different implementations should implement this API 
+                      in the same way to make sure that the developers have the 
                       same user experience.
-                    </p>
+                    </dd>
 
-                  <li>Communication mechanism and protocol between client and Edge cloud WebAssembly runtime</li>
-                    <p>
-                      The communication mechanism, the communication protocol and the interface between the client side WebAssembly runtime and the Edge cloud side WebAssembly runtime should be standardized to enable
-                      the interoperability of different WebAssembly runtime vendors.
-                    </p>
+                  <dt>Communication mechanism and protocol between client and Edge cloud:</dt>
+                    <dd>
+                      The communication mechanism, the communication protocol,
+                      and the interface (network API) between the client side 
+                      and the Edge cloud should be standardized to enable
+                      the interoperability of different Edge cloud providers.
+                    </dd>
 
-                  <li>Edge cloud availability and network condition discovery</li>
-                    <p>
-                      The wasm code should only be offloaded when certain condition is meet. The condition may includes Edge cloud availability and network condition etc.
-                      Whether this part should be standardized is TBD.
-                    </p>
+                  <dt>Edge cloud availability and network condition discovery:</dt>
+                    <dd>
+                      The workload should only be offloaded when certain conditions
+                      are met. 
+                      These condition may include Edge cloud availability 
+                      and network condition.
+                    </dd>
+                 </dl>
 
-                  <li>Offloading policy </li>
-                    <p>
-                      This proposal recommend that offloading policy is not standardized to allow the flexibility implementation of different vendors. 
-                    </p>
+              </section>
+
+              <section id="OutOfScope">
+                <h3>Out of Scope</h3>
+                <p>The following topics will be out of scope of standardization
+                work:</p>
+                <dl>
+                  <dt>Offloading policy:</dt>
+                    <dd>
+                      This proposal recommends that the offloading policy is not 
+                      standardized to allow flexibile implementation by 
+                      different vendors. 
+                    </dd>
+                </dl>
               </section>
 
               <section>
