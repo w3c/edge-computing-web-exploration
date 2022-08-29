@@ -891,15 +891,15 @@
         <li>Once a Compute Utility is selected, the browser would
             automatically (transparent to the application) use the 
             network API of the Compute Utility to load and execute the
-            Worker.  Note that in the existing Worker API, a URL of
+            workload for the Worker.  
+            Note that in the existing Worker API, a URL of
             a Javascript workload is provided to the Worker.  
         </li>
         <li>The Compute Utility itself would be responsible for downloading
             the workload, it would not have to be downloaded to the 
             browser and then uploaded.  Also, a WASM workload could be used,
             bootstrapping from the standard Javascript workload.
-            In the future, other workload packaging types, such as 
-            container images, might also be supported.  In general, the
+            In general, the
             workload execution environment should be the same as the 
             normal Worker execution environment.  However, access to
             accelerators to support performance and other advanced capabilities
@@ -922,88 +922,7 @@
             Proposed High Level Architecture: Distributed Workers
           </figcaption>
         </figure>
-        <p>
-          The following figure has some additional details on how the 
-          various entities communicate with each other in the case of 
-          working being offloaded from a web application running in a 
-          browser.  In this figure
-          we also introduce a "Shim Worker" which is just a regular worker
-          that acts as an intermediary to the remote worker, by connecting
-          to a local service, a "Worker Proxy", that can also take care
-          of terminating secure transport to the remote Compute Utility service.
-          This proxy can also do the work of discovering and selecting
-          a suitable Compute Utility for a given workload.
-          In the long run, the function of the shim and proxy can be integrated into
-          the browser, but in the short term, these components
-          can be used to provide
-          an implementation without needing explicit browser support.
-          Also, discovery can be performed using WoT Discovery, a W3C standard
-          already nearing completion.
-        </p>
-        <figure>
-          <img alt="Distributed Worker Architecture Details" src="images/DW_details.png" width="600">
-          <figcaption>
-            Proposed High Level Architecture: Distributed Workers, Details
-          </figcaption>
-        </figure>
-        <p>
-          The workload is specified as a URL to the Worker API as usual.
-          Note that the selected Compute Utility does the work of actually fetching the 
-          workload, via its network connection, rather than over the 
-          browser's network connection (this also avoids potentially transmitting the workload
-          twice over the browser's network connection).
-          Once instantiated by the Workload Manager, the workload can
-          communicate with the application via the proxy, which can
-          also deal with any secure transport termination.
-        </p>
-        <p>
-          The current Worker API expects a workload in the form of a URL
-          that references ECMAScript (Javascript) content.  However, we could
-          extend this in two ways: by allowing APIs that allow the script to 
-          bootstrap other executable content, such as WASM, or by allowing
-          the GET from the URL to support other Content-Types.
-        </p>
-        <p>
-          A set of status-checking/keep-alive messages check if
-          the web application is still running. If the web application has
-          not responded to a status-checking message for a while, the workload can be automatically shut
-          down.  This reflects current Worker lifetime semantics, where the 
-          Worker is shut down (after a small delay to support navigation)
-          when the web application that starts it closes.
-          However, for Distributed Workers there is also the possibility that the
-          Compute Utility and the workers it supports might fail or become inaccessible due to network
-          conditions.  The browser would have to detect this condition as
-          well by throwing an appropriate exeception if status-checking messages do
-          not arrive as expected.  It would also be possible to reverse which system
-          initiates and responds to the status-checking/keep-alive messages; conceptually,
-          both systems need to confirm that the other is still responding.
-        </p>
-        <figure>
-          <img alt="Distributed Worker Process for Browsers" src="images/DWflow.png" width="720">
-          <figcaption>
-            Distributed Worker Message Flow for Browsers.
-          </figcaption>
-        </figure>
-        <p>
-          It would be also be possible to use a Compute Utility from a non-browser
-          client, such as an IoT device.  In this case the interactions would be
-          simplified as a proxy and shim would not be required.  The keep-alive
-          interaction would allow for longer-lived Distributed Workers in this case,
-          but would also automatically handle the case where an IoT device goes offline
-          or is deinstalled.  An IoT device would also have to deal with the case
-          where a Compute Utility goes offline temporarily or permanently.
-          The diagram shows the workload being fetched from a web server as in the browser case.  
-          Note, however,
-          that an IoT device could host a web server itself, and so can provide the 
-          workload directly if necessary via what would essentially be a webhook.
-        </p>
-        <figure>
-          <img alt="Distributed Worker Process for IoT Devices" src="images/DWflow_IoT.png" width="450">
-          <figcaption>
-            Distributed Worker Message Flow for IoT Devices.
-          </figcaption>
-        </figure>
-
+      </section>
     </section>
 
     <section>
