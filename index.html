@@ -328,7 +328,7 @@
             For this category of use cases, the client side application leverage edge cloud for accelerating certain work loads by offloading those work loads to the edge.
           </p>
           <section id="UC-CA">
-            <h4>Cloud App</h4>
+            <h4>Cloud App (UC-CA)</h4>
                 <p>
                   Cloud App is a new form of application which utilizing cloud computing technology to move client side application's work load to the edge cloud and central cloud. The user interaction happens 
                   at the client device side and the computing and rendering process happens in the edge cloud side. This can accelerate the client side application's performance, lower the client's hardware requirement and reduce the cost.
@@ -352,7 +352,7 @@
           </section>
 
           <section id="UC-VR">
-            <h4>VR/AR Acceleration</h4>
+            <h4>VR/AR Acceleration (UC-VR)</h4>
               <p>
                 VR/AR devices such as VR/AR glasses normally has limited hardware resources, so it is preferred to offload the computing intensive task to the edge for acceleration and
                 reducing delay since the edge server is deployed near the location of the user.
@@ -368,7 +368,7 @@
           </section>
 
           <section id="UC-CG">
-            <h4>Cloud Gaming</h4>
+            <h4>Cloud Gaming (UC-CG)</h4>
               <p>
                 Cloud gaming is a game mode which leverages cloud/edge computing. Under the operation mode of cloud game, the games are running on the cloud side, and the game images are compressed and transmitted to users by video stream through the network after rendering. 
                 The cloud gaming user can receive the game video stream and send control commands to the cloud to control the game.
@@ -384,7 +384,7 @@
 
 
           <section id="UC-SA">
-            <h4>Streaming Acceleration</h4>
+            <h4>Streaming Acceleration (UC-SA)</h4>
             <p>In the case of video acceleration, we may want to offload work to a location with both
               compute performance that is already on the network path.  Specifically, consider a low-performance
               client that wants to compress video or do background removal as part of a teleconference.
@@ -399,7 +399,7 @@
             </p>
 
             <section id="UC-VC">
-              <h5>Online Video Conference</h5>
+              <h5>Online Video Conference (UC-VC)</h5>
                 <p>
                   One special case of streaming acceleration is online video conference application. The online video conference system provides realtime translation and subtitles service. 
                   This will use AI/Machine learning technology and it is computing intensive. Also, the real time translation service is very delay sensitive. 
@@ -423,7 +423,7 @@
           </section>
 
           <section id="UC-MLA">
-            <h4>Machine Learning Acceleration</h4>
+            <h4>Machine Learning Acceleration (UC-MLA)</h4>
               <p>
                 Machine learning inference can be done in the client side to reduce latency. W3C is working on <a href="https://www.w3.org/groups/wg/webmachinelearning">WebNN</a>  standard that 
                 allows client side developers to leverage the machine learning acceleration hardwares reside in the client side devices.
@@ -437,7 +437,7 @@
               </p>
 
               <section id="UC-IVPU">
-                <h5>Image and Video Processing and Understanding</h5>
+                <h5>Image and Video Processing and Understanding (UC-IVPU)</h5>
                 <p>
                   One special case of machine learning acceleration is Image and Video Processing and Understanding. For some mobile image/video processing applications, it is required to use machine learning 
                   algorithm for the image/video analysis and processing. It is normally need NPU chipset on the terminals for better performance.
@@ -447,7 +447,7 @@
               </section>
 
               <section id="UC-PWMP">
-                <h4>Professional Web-based Media Production</h4>
+                <h4>Professional Web-based Media Production (UC-PWMP)</h4>
                   <p>
                     Another special case and example of machine learning acceleration is Professional Web-based Media Production. 
                     Processing and rendering media is a complex task. For example, a video editing application needs to do image processing, video editing, audio editing, etc. 
@@ -480,7 +480,7 @@
               </p>
               
               <section id="UC-LVB">
-                <h4>Live video broadcasting mobile application</h4>
+                <h4>Live video broadcasting mobile application (UC-LVB)</h4>
                  
                   <p>
                     One example of such use cases is: for the mobile application (for example, live video broadcasting mobile application) that leverage edge cloud for computing and/or machine learning 
@@ -490,7 +490,7 @@
               </section>
 
               <section id="UC-ALPR">
-                <h4>Automatic License Plate Recognition</h4>
+                <h4>Automatic License Plate Recognition (UC-ALPR)</h4>
                 <p>
                   Another example is Automatic License Plate Recognition. For automatic license plate recognition applications, offline processing can provide 90% recognition rate. Online processing on the edge will improve the recognition rate to 99%. 
                   It is preferred to offload the license plate recognition computing intensive task to edge when the network connection is stable and if the network condition is not stable or broken, the offloaded computing
@@ -504,7 +504,7 @@
       <section>
         <h3>IoT workloads</h3>
           <section id="UC-RNA">
-            <h4>Robot Navigation Acceleration</h4>
+            <h4>Robot Navigation Acceleration (UC-RNA)</h4>
               <p>
                 Consider a robot navigating in a home using Visual SLAM.  In this case the robot has limited
                 performance due to cost and power constraints.  So it wishes to offload the video processing work
@@ -525,9 +525,9 @@
       </section>
 
       <section id="UC-PW">
-        <h3>Persistent workloads</h3>
+        <h3>Persistent workloads (UC-PW)</h3>
           <p>
-            In some cases it may be desireable to a task from a browser that continues to run even when the 
+            In some cases it may be desireable to start a task from a browser that continues to run even when the 
             browser application is not active.  This could be used to monitor a condition for example and send
             a notification when that condition is met.  As a sub-category of this use case, the offloaded task
             might be used to monitor IoT devices and instead of or in addition to sending a notification, it
