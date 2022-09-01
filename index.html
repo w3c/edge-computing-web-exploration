@@ -294,6 +294,7 @@
       <p>
         The client side application could be generally classified into the following categories:
       </p>
+      <ul>
           <li>Render intensive application</li>
               <p>
                 Render intensive application refers to the client side applications whose main task is to fetch the content from the backend server then rendering the content in the front-end.
@@ -316,6 +317,7 @@
               On the other hands, some client side application will change its location continuously. For example, for applications running on a connected vehicle or self driving vehicle, 
               it will change its location rapidly with the vehicle.
             </p>
+       </ul>
 
 
       <p>
@@ -552,12 +554,15 @@
         <h2>Common approaches for offloading</h2>
         <p>
           Currently, there are two common approaches for offloading. One is to send the codes in the request from the client to the edge server, the other is to fetch the codes from inner file repositories on edge and execute them. They all work fine, but both approaches have some downsides.
+        </p>
   
-          <li>Sending codes from client to edge</li>
-  
+        <dl>
+          <dt>Sending codes from client to edge</dt>
+          <dd> 
           <p>In this approach, the client sends the local codes to the edge and execute the codes on the edge side. The downside is obvious, since more data is transferred and it may cause network latency.Handling more data will also put more strain on the resource-restricted end device. Meanwhile, some codes are sensitive, data security is also an big issue.  </p>
-  
-          <li>Fetching codes from file repositories and executing on edge</li>
+          </dd>
+          <dt>Fetching codes from file repositories and executing on edge</dt>
+          <dd>
           <figure>
             <img alt="EdgeFetch" src="images/edge_fetching_codes.png" width="600">
             <figcaption>
@@ -570,6 +575,8 @@
           <p>The downside of this approach is that additional file repositories are needed and the developers have to upload the codes to the repository and make sure the local and the edge side have the same version codes. </p>
 
           <p>Meanwhile, since the offloading library plays an import role in offloading, developers should be reliable for  creating a robust offloading policy to discovery and connect with edge nodes, decide which parts of the codes can be offloaded and the time to offload. This will put more strain on the developer and affect the overall programming experience and the productivity.</p>
+          </dd>
+        </dl>
           
       </section>
 
@@ -579,6 +586,7 @@
           <p>
               The two approaches discussed above are mostly similar. The main difference is the way the codes are sent to the edge. However, except for those downsides mentioned, some common issues or pain points are still remained 
               and needed to be addressed. 
+          </p>
               <ul>
                 <li>Discrepancies between client runtime and edge runtime may cause running failures, as well as the runtime differences between edge node and edge node.So an unified runtime is needed to take into consideration. WebAssembly runtime may be good choice.</li>
                 <li>Capabilities for discovering and connecting with edge nodes is needed. </li>
@@ -586,7 +594,6 @@
                 <li>When certain condition meets, for example, if there is no edge server in proximity to the user or the internet is lost, codes should be executed locally instead of offloaded. That's to say, the developer will know what might be offloaded to a server but does not need to decide or care about when it is offloaded. </li>
                 <li>Security and privacy are important, secure communication mechanisms are needed.</li>
               </ul>
-          </p>
 
           <p>
             There is no W3C standard currently available to address the above gaps. To achieve the interoperability between different vendors, standardization is needed.
@@ -876,7 +883,7 @@
             In this architecture, the code of the work load in the client side could be offloaded to the edge cloud and can also be handover to central cloud and handover back to client.
             The high-level procedure is as follows:
           </p>
-
+          <ul>
           <li>
             The client side application encapsulate offloaded work load code into offloaded code module and load the code module using specific API for the runtime environment.
             There may be different types of runtime environment, for example, WebAssembly or JavaScript runtime.
@@ -903,6 +910,7 @@
             If offloading is not feasible in certain conditions, for example, if the network connection between the client and Edge cloud is not stable or 
             there is no enough resources in the Edge Cloud, the offloaded work load should handover back to the client side to ensure the availability of the client application.
           </li>
+          </ul>
 
       </section>
 
@@ -999,26 +1007,33 @@
                   The proposed solution includes the following parts:
                 </p>
 
-                <li>Load WASM code</li>
+                <dl>
+                <dt>Load WASM code</dt>
+                <dd>
                     <p>
                       The client load the WebAssembly code by invoking a standard API. This API should indicate that the WASM code could be offloaded to Edge cloud when certain condition is meet.
                       This API should also set the destination Edge cloud's location identifier.
                     </p>
-
-                <li>Offload WASM code to Edge Cloud</li>
+                </dd>
+                <dt>Offload WASM code to Edge Cloud</dt>
+                <dd>
                     <p>
                       The client side's WebAssembly runtime executes the WASM code and when certain condition is meet, it offload the WASM code to the Edge cloud.
                     </p>
-
-                <li>Run WASM code on Edge cloud</li>
+                </dd>
+                <dt>Run WASM code on Edge cloud</dt>
+                <dd>
                     <p>
                       The WASM code runs on the Edge cloud, and return the result back to the client side.
                     </p>
-
-                <li>Dispatch back to the client</li>
+                </dd>
+                <dt>Dispatch back to the client</dt>
+                <dd>
                     <p>
                       When certain condition is meet, the WASM code is dispatched back to the client side and continue to run.
                     </p>
+                </dd>
+                </dl>
                 </section>
               
               <section id="PotentialStandards">
@@ -1079,8 +1094,10 @@
                 </p>
 
                 <p>There are basically two different approaches for the standardization:  </p>
+                <ul>
                   <li>Option 1: Divide the standardization work into different relevant W3C working groups. </li>
                   <li>Option 2: Establish a new working group that focus on the standardization of this problem.</li>
+                </ul>
 
                 <p>
                   The disadvantage of option 1 is that if divided the work to different related working groups in W3C, it would be very difficult to maintain a unified architecture.
