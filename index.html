@@ -467,10 +467,19 @@
                     </figcaption>
                   </figure>
               </section>
-
+              <section id="UC-BR">
+                <h4>Background Rendering (UC-BR)</h4>
+                <p>As a special case of <a href="#UC-PWMP">UC-PWMP</a>
+                 and <a href="#UC-IVPU">UC-IVPU</a>, a user may want to 
+                 execute a background task, for example for rendering
+                 or machine training.  This task would execute even
+                 while the initiating web application is not active.  Such
+                 tasks are not latency sensitive and so could also be
+                 performed in the cloud, but the user may wish to
+                 execute them on hardware under thier control for
+                 privacy or confidentiality reasons. 
+                </p>
           </section>
-
-       
 
           <section>
             <h3>Rbustness of Workload Acceleration for Certain Applications</h3>
@@ -503,6 +512,19 @@
 
       <section>
         <h3>IoT workloads</h3>
+          <p>
+          In general, there are many opportunities for IoT devices 
+          to offload work to another computer, since they are generally
+          constrained in processing power, energy, or both.  
+          Video processing however is of special interest because of its 
+          high data and processing
+          requirements and privacy constraints.
+          In this case the offload source is not necessarily a browser
+          or web application but the process may be indirectly managed by one,
+          and the capabilities provided by the proposed standard (e.g. a 
+          discoverable compute utility) can also be used directly by
+          an IoT device.
+          </p>
           <section id="UC-RNA">
             <h4>Robot Navigation Acceleration (UC-RNA)</h4>
               <p>
@@ -514,16 +536,26 @@
                 results immediately to make navigation decisions, for example to avoid a wire or other obstacle
                 on the floor).
                 </p>
-                <p>
-                Note: in general, there are other opportunities for IoT devices to want to offload work to another
-                computer.  Video processing however is of special interest because of its high data and processing
-                requirements and privacy constraints.
-                </p>
           </section>
-
+          <section id="UC-CM">
+            <h4>Child Monitor (UC-CM)</h4>
+              <p>
+                In this use case a smart camera is directed to inform a
+                parent if children leave a designated area, for example
+                a yard. This requires person detection, a video
+                analytics service which is computationally intense and
+                difficult to perform on a phone.  However, for privacy
+                reasons, the parent does not want to stream video to the
+                cloud and perform processing there.  In this case, the
+                parent also wants to run the processing as a background
+                task that executes even when the browser/web app that 
+                invoked it is closed.
+              </p>
+          </section>
 
       </section>
 
+<!-- This is a "feature" tht should be incorporated into more concrete use cases
       <section id="UC-PW">
         <h3>Persistent workloads (UC-PW)</h3>
           <p>
@@ -542,6 +574,7 @@
             data they generate.
         </p>
       </section>
+-->
     </section>
 
 
@@ -629,10 +662,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -648,10 +682,12 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -667,10 +703,12 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -686,10 +724,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -706,10 +745,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -725,10 +765,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -744,10 +785,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -763,10 +805,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
           </tbody>
@@ -805,10 +848,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -828,10 +872,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -863,10 +908,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -892,10 +938,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -914,10 +961,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -938,10 +986,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -961,10 +1010,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -993,10 +1043,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -1015,10 +1066,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -1037,10 +1089,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -1058,10 +1111,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -1082,10 +1136,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -1104,10 +1159,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
             <tr>
@@ -1130,10 +1186,11 @@
                 <a href="#UC-MLA">UC-MLA</a><br/>
                 <a href="#UC-IVPU">UC-IVPU</a><br/>
                 <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
                 <a href="#UC-LVB">UC-LVB</a><br/>
                 <a href="#UC-ALPR">UC-ALPR</a><br/>
                 <a href="#UC-RNA">UC-RNA</a><br/>
-                <a href="#UC-PW">UC-PW</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
               </td>
             </tr>
           </tbody>
