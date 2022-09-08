@@ -330,7 +330,7 @@
             For this category of use cases, the client side application leverage edge cloud for accelerating certain work loads by offloading those work loads to the edge.
           </p>
           <section id="UC-CA">
-            <h4>Cloud App</h4>
+            <h4>Cloud App (UC-CA)</h4>
                 <p>
                   Cloud App is a new form of application which utilizing cloud computing technology to move client side application's work load to the edge cloud and central cloud. The user interaction happens 
                   at the client device side and the computing and rendering process happens in the edge cloud side. This can accelerate the client side application's performance, lower the client's hardware requirement and reduce the cost.
@@ -354,7 +354,7 @@
           </section>
 
           <section id="UC-VR">
-            <h4>VR/AR Acceleration</h4>
+            <h4>VR/AR Acceleration (UC-VR)</h4>
               <p>
                 VR/AR devices such as VR/AR glasses normally has limited hardware resources, so it is preferred to offload the computing intensive task to the edge for acceleration and
                 reducing delay since the edge server is deployed near the location of the user.
@@ -370,7 +370,7 @@
           </section>
 
           <section id="UC-CG">
-            <h4>Cloud Gaming</h4>
+            <h4>Cloud Gaming (UC-CG)</h4>
               <p>
                 Cloud gaming is a game mode which leverages cloud/edge computing. Under the operation mode of cloud game, the games are running on the cloud side, and the game images are compressed and transmitted to users by video stream through the network after rendering. 
                 The cloud gaming user can receive the game video stream and send control commands to the cloud to control the game.
@@ -386,7 +386,7 @@
 
 
           <section id="UC-SA">
-            <h4>Streaming Acceleration</h4>
+            <h4>Streaming Acceleration (UC-SA)</h4>
             <p>In the case of video acceleration, we may want to offload work to a location with both
               compute performance that is already on the network path.  Specifically, consider a low-performance
               client that wants to compress video or do background removal as part of a teleconference.
@@ -401,7 +401,7 @@
             </p>
 
             <section id="UC-VC">
-              <h5>Online Video Conference</h5>
+              <h5>Online Video Conference (UC-VC)</h5>
                 <p>
                   One special case of streaming acceleration is online video conference application. The online video conference system provides realtime translation and subtitles service. 
                   This will use AI/Machine learning technology and it is computing intensive. Also, the real time translation service is very delay sensitive. 
@@ -425,7 +425,7 @@
           </section>
 
           <section id="UC-MLA">
-            <h4>Machine Learning Acceleration</h4>
+            <h4>Machine Learning Acceleration (UC-MLA)</h4>
               <p>
                 Machine learning inference can be done in the client side to reduce latency. W3C is working on <a href="https://www.w3.org/groups/wg/webmachinelearning">WebNN</a>  standard that 
                 allows client side developers to leverage the machine learning acceleration hardware reside in the client side devices.
@@ -439,7 +439,7 @@
               </p>
 
               <section id="UC-IVPU">
-                <h5>Image and Video Processing and Understanding</h5>
+                <h5>Image and Video Processing and Understanding (UC-IVPU)</h5>
                 <p>
                   One special case of machine learning acceleration is Image and Video Processing and Understanding. For some mobile image/video processing applications, it is required to use machine learning 
                   algorithm for the image/video analysis and processing. It is normally need NPU chipset on the terminals for better performance.
@@ -449,7 +449,7 @@
               </section>
 
               <section id="UC-PWMP">
-                <h4>Professional Web-based Media Production</h4>
+                <h4>Professional Web-based Media Production (UC-PWMP)</h4>
                   <p>
                     Another special case and example of machine learning acceleration is Professional Web-based Media Production. 
                     Processing and rendering media is a complex task. For example, a video editing application needs to do image processing, video editing, audio editing, etc. 
@@ -469,10 +469,19 @@
                     </figcaption>
                   </figure>
               </section>
-
+              <section id="UC-BR">
+                <h4>Background Rendering (UC-BR)</h4>
+                <p>As a special case of <a href="#UC-PWMP">UC-PWMP</a>
+                 and <a href="#UC-IVPU">UC-IVPU</a>, a user may want to 
+                 execute a background task, for example for rendering
+                 or machine training.  This task would execute even
+                 while the initiating web application is not active.  Such
+                 tasks are not latency sensitive and so could also be
+                 performed in the cloud, but the user may wish to
+                 execute them on hardware under their control for
+                 privacy or confidentiality reasons. 
+                </p>
           </section>
-
-       
 
           <section>
             <h3>Robustness of Workload Acceleration for Certain Applications</h3>
@@ -482,7 +491,7 @@
               </p>
               
               <section id="UC-LVB">
-                <h4>Live video broadcasting mobile application</h4>
+                <h4>Live video broadcasting mobile application (UC-LVB)</h4>
                  
                   <p>
                     One example of such use cases is: for the mobile application (for example, live video broadcasting mobile application) that leverage edge cloud for computing and/or machine learning 
@@ -492,7 +501,7 @@
               </section>
 
               <section id="UC-ALPR">
-                <h4>Automatic License Plate Recognition</h4>
+                <h4>Automatic License Plate Recognition (UC-ALPR)</h4>
                 <p>
                   Another example is Automatic License Plate Recognition. For automatic license plate recognition applications, offline processing can provide 90% recognition rate. Online processing on the edge will improve the recognition rate to 99%. 
                   It is preferred to offload the license plate recognition computing intensive task to edge when the network connection is stable and if the network condition is not stable or broken, the offloaded computing
@@ -505,8 +514,21 @@
 
       <section>
         <h3>IoT workloads</h3>
+          <p>
+          In general, there are many opportunities for IoT devices 
+          to offload work to another computer, since they are generally
+          constrained in processing power, energy, or both.  
+          Video processing however is of special interest because of its 
+          high data and processing
+          requirements and privacy constraints.
+          In this case the offload source is not necessarily a browser
+          or web application but the process may be indirectly managed by one,
+          and the capabilities provided by the proposed standard (e.g. a 
+          discoverable compute utility) can also be used directly by
+          an IoT device.
+          </p>
           <section id="UC-RNA">
-            <h4>Robot Navigation Acceleration</h4>
+            <h4>Robot Navigation Acceleration (UC-RNA)</h4>
               <p>
                 Consider a robot navigating in a home using Visual SLAM.  In this case the robot has limited
                 performance due to cost and power constraints.  So it wishes to offload the video processing work
@@ -516,20 +538,30 @@
                 results immediately to make navigation decisions, for example to avoid a wire or other obstacle
                 on the floor).
                 </p>
-                <p>
-                Note: in general, there are other opportunities for IoT devices to want to offload work to another
-                computer.  Video processing however is of special interest because of its high data and processing
-                requirements and privacy constraints.
-                </p>
           </section>
-
+          <section id="UC-CM">
+            <h4>Child Monitor (UC-CM)</h4>
+              <p>
+                In this use case a smart camera is directed to inform a
+                parent if children leave a designated area, for example
+                a yard. This requires person detection, a video
+                analytics service which is computationally intense and
+                difficult to perform on a phone.  However, for privacy
+                reasons, the parent does not want to stream video to the
+                cloud and perform processing there.  In this case, the
+                parent also wants to run the processing as a background
+                task that executes even when the browser/web app that 
+                invoked it is closed.
+              </p>
+          </section>
 
       </section>
 
+<!-- This is a "feature" tht should be incorporated into more concrete use cases
       <section id="UC-PW">
-        <h3>Persistent workloads</h3>
+        <h3>Persistent workloads (UC-PW)</h3>
           <p>
-            In some cases it may be desirable to a task from a browser that continues to run even when the 
+            In some cases it may be desireable to start a task from a browser that continues to run even when the 
             browser application is not active.  This could be used to monitor a condition for example and send
             a notification when that condition is met.  As a sub-category of this use case, the offloaded task
             might be used to monitor IoT devices and instead of or in addition to sending a notification, it
@@ -544,6 +576,7 @@
             data they generate.
         </p>
       </section>
+-->
     </section>
 
 
@@ -570,7 +603,7 @@
             </figcaption>
           </figure>
   
-          <p>In this approach, The client leverages user-defined offloading library to send proper params to the offloading server and the server will fetch specified codes from inner repositories and then execute the codes.</p>
+          <p>In this approach, The client leverages user-defined offloading library to send proper parameters to the offloading server and the server will fetch specified codes from inner repositories and then execute the codes.</p>
   
           <p>The downside of this approach is that additional file repositories are needed and the developers have to upload the codes to the repository and make sure the local and the edge side have the same version codes. </p>
 
@@ -610,13 +643,14 @@
       <p>
         The following are a set of high-level requirements,
         cross-referenced with related use cases.
+        A link is only added between a requirement 
       </p>
         <table>
           <thead>
             <tr>
               <th>Name</th>
               <th>Description</th>
-              <th>Use Cases</th>
+              <th style="width:15%">Use Cases</th>
             </tr>
           </thead>
           <tbody>
@@ -626,50 +660,164 @@
                   as measured by user responsiveness or time to completion
                   of computational work as appropriate,
                   should be improved.</td>
-              <td>TBD</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Scalability</td>
               <td>Efficient implementation in a virtualized cluster environment
                   (i.e. a cloud system) should be achievable.</td>
-              <td>TBD</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Flexibility</td>
               <td>The solution should allow a variety of compute resources
                   from different providers to be used.</td>
-              <td>TBD</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Compatibility</td>
               <td>The proposed standards should be as consistent as possible
                   with existing web standards to maximize adoption.</td>
-              <td>TBD</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Resiliency</td>
               <td>The solution should allow adaptation to changing circumstances
                   such as changes in relative performance, network connectivity,
                   or failure of a remote Computing Resource.</td>
-              <td>TBD</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Security</td>
               <td>The standards should be consistent with existing
                   security expectations for web applications.</td>
-              <td>TBD</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Privacy</td>
               <td>The standards should be consistent with existing
                   privacy expectations for web applications.</td>
-              <td>TBD</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Control</td>
               <td>The use of resources should ultimately be under the 
                   control of the entity responsible for paying for their use.</td>
-              <td>TBD</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -689,7 +837,7 @@
               <th>General Requirements</th>
               <th>Name</th>
               <th>Description</th>
-              <th>Use Cases</th>
+              <th style="width:15%">Use Cases</th>
             </tr>
           </thead>
           <tbody>
@@ -698,7 +846,21 @@
               <td>R1: Client Offload.</td>
               <td>Client should be able to offload computing intensive work 
                   to an edge resource.</td>
-              <td>Use case 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10, 2.11, 2.12, 2.13; </td> 
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Resiliency</td>
@@ -708,7 +870,21 @@
                   This may include temporarily running a workload on 
                   multiple computing resources to hide transfer latency.
               </td>
-              <td>Use case (refs TBD) ;</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Resiliency</td>
@@ -719,14 +895,32 @@
                 and back to the client, as necessary.
                 If the workload is stateful, 
                 this includes state capture and transfer.</td>
-              <td>Use case 2.1,2.2, 2.5;</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Flexibility</td>
               <td>R3: Discovery.</td>
               <td>A client should be able to dynamically enumerate available 
                   edge resources.</td>
-              <td>Use case (refs TBD);</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Flexibility</td>
@@ -742,7 +936,21 @@
                   Also, it needs to be clear about how this is different
                   from the out-of-scope issue "Offload policy".
                 </td>
-              <td>Use case (refs TBD);</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Flexibility</td>
@@ -751,7 +959,21 @@
                 a variety of edge resources.
                 This means either platform independence OR a means to 
                 negotiate which workloads can run where.</td>
-              <td>Use case (refs TBD);</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Flexibility</td>
@@ -762,7 +984,21 @@
                 up workloads under some conditions, 
                 such as if the client has not connected for a certain amount
                 of time, etc.)</td>
-              <td>Use case (refs TBD);</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Security, Privacy</td>
@@ -772,7 +1008,21 @@
                 Note: this may result in constraints upon the selection of offload targets, but 
                 it also means data needs to be protected in transit, at rest, etc.
               </td>
-              <td>Use case (refs TBD);</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Control</td>
@@ -791,7 +1041,21 @@
                 but is also about controlling charges (so a web app does
                 not abuse the edge resources paid for by a client).
                 </td>
-              <td>Use case (refs TBD);</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Scalability</td>
@@ -800,7 +1064,21 @@
                   are stateless so they can be run in a more scalable
                   manner, using FaaS cloud mechanisms.
                 </td>
-              <td>Use case (refs TBD);</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Compatibility</td>
@@ -809,7 +1087,21 @@
                   to be compatible with existing client-side 
                   programming model expectations.
                 </td>
-              <td>Use case (refs TBD);</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Performance</td>
@@ -817,7 +1109,21 @@
               <td>It should be possible to run multiple workloads in
                   parallel and/or express parallelism within a single workload.
                 </td>
-              <td>Use case (refs TBD);</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Performance</td>
@@ -828,7 +1134,21 @@
                   main (user interface) thread to run in parallel with the
                   workload (even if the workload is being run on the client).
                 </td>
-              <td>Use case (refs TBD);</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Security</td>
@@ -837,7 +1157,21 @@
                 a way that it can be run in a sandboxed environment and its
                 access to resources can be managed.
               </td>
-              <td>Use case (refs TBD);</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
             <tr>
               <td>Performance, Compatibility</td>
@@ -850,7 +1184,21 @@
                   resource to use for offload.  Access to such resources
                   should use web standards, e.g. standard WASM/WASI APIs.
                 </td>
-              <td>Use case (refs TBD);</td>
+              <td>
+                <a href="#UC-CA">UC-CA</a><br/>
+                <a href="#UC-VR">UC-VR</a><br/>
+                <a href="#UC-CG">UC-CG</a><br/>
+                <a href="#UC-SA">UC-SA</a><br/>
+                <a href="#UC-VC">UC-VC</a><br/>
+                <a href="#UC-MLA">UC-MLA</a><br/>
+                <a href="#UC-IVPU">UC-IVPU</a><br/>
+                <a href="#UC-PWMP">UC-PWMP</a><br/>
+                <a href="#UC-BR">UC-BR</a><br/>
+                <a href="#UC-LVB">UC-LVB</a><br/>
+                <a href="#UC-ALPR">UC-ALPR</a><br/>
+                <a href="#UC-RNA">UC-RNA</a><br/>
+                <a href="#UC-CM">UC-CM</a><br/>
+              </td>
             </tr>
           </tbody>
         </table>
