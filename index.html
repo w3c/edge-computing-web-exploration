@@ -53,7 +53,7 @@
                 companyURL: "https://www.chinamobileltd.com",
                 company:"China Mobile"
               }
-            
+
             ],
 
             group: "web-networks"
@@ -65,7 +65,7 @@
 <body>
     <section id='abstract'>
         <p>
-        This document introduces the use cases and requirements of a client, edge, and cloud coordination mechanism and its standardization. 
+        This document introduces the use cases and requirements of a client, edge, and cloud coordination mechanism and its standardization.
         </p>
     </section>
     <section id='sotd'>
@@ -76,13 +76,12 @@
 
     <section>
       <h2>Introduction</h2>
-        <p>With the rapid development of cloud computing technology, the centralized cloud is evolving towards a distributed "edge cloud".  An edge cloud allows developers to deploy their code using function-as-a-service (FaaS) close to the user's location. One of such service is Alibaba Cloud's <a href="https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/er-overview">EdgeRoutine</a> 
-          service.</p>
-      
+        <p>With the rapid development of cloud computing technology, the centralized cloud is evolving towards a distributed "edge cloud".  An edge cloud allows developers to deploy their code using Function-as-a-Service (FaaS) close to the user's location. One example of such a service is Alibaba Cloud's <a href="https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/er-overview">EdgeRoutine</a> service.</p>
+
         <p>
-          With the rapid adoption of new technologies such as machine learning, IoT etc. in client side applications, client side applications may also need to perform computing intensive work. For example, machine
-          learning inference can also be done in the client side. As one such examples, the Taobao mobile App leverages client side machine learning inference for user face detection etc. 
-          W3C is also working on <a href="https://www.w3.org/groups/wg/webmachinelearning">WebNN</a>  standard that allow client side developers to leverage the machine learning acceleration 
+          With the rapid adoption of new technologies such as machine learning, IoT, etc., in client side applications, client side applications may also need to perform computing intensive work. For example, machine
+          learning inference can also be done on the client side. As one such example, the Taobao mobile app leverages client side machine learning inference for user face detection etc.
+          W3C is also working on the <a href="https://www.w3.org/groups/wg/webmachinelearning">WebNN</a> standard that allows client side developers to leverage the machine learning acceleration
           hardware that resides in client side devices.
         </p>
 
@@ -93,7 +92,7 @@
         </p>
 
         <p>
-          
+
         </p>
 
     </section>
@@ -102,7 +101,7 @@
       <h2>Terminology</h2>
       <p>This document uses the following terms with the specific meanings defined here.
          Where possible these meanings are consistent with common usage.
-         However, note that common usage of some of these terms have 
+         However, note that common usage of some of these terms have
          multiple, ambiguous, or inconsistent meanings.
          The definition here will take precedence.
          When terms are used with the specific meanings defined here they will
@@ -116,9 +115,9 @@
 -->
         <dt><dfn class="lint-ignore">Edge</dfn></dt>
         <dd>
-        The periphery of a network.  
+        The periphery of a network.
         Often used to refer specifically to the set of computing
-        resources available close to a client. 
+        resources available close to a client.
         </dd>
         <dt><dfn class="lint-ignore">FaaS</dfn></dt>
         <dd>Function as a Service.
@@ -131,7 +130,7 @@
         </dd>
         <dt><dfn class="lint-ignore">Cloud</dfn></dt>
         <dd>
-        A set of managed services that are 
+        A set of managed services that are
         designed to be interchangeable, scalable, and location-independent.
         </dd>
         <dt><dfn class="lint-ignore">Cloud Resources</dfn></dt>
@@ -152,16 +151,16 @@
         Note: this definition does not
         necessarily include "endpoints" such as IoT sensors.
         It refers specifically to computers
-        that can make Computing Resources available to others on the network.  
+        that can make Computing Resources available to others on the network.
         </dd>
         <dt><dfn class="lint-ignore">Migration</dfn></dt>
         <dd>
-        The ability to move a workload from one Computing Resources to another.
+        The ability to move a workload from one Computing Resource to another.
         See also Live Migration and Application-Directed Migration, which are subclasses.
         </dd>
         <dt><dfn class="lint-ignore">Live Migration</dfn></dt>
         <dd>
-        The ability to transparently move a running workload from one Computing Resources to another.
+        The ability to transparently move a running workload from one Computing Resource to another.
         This includes transparent migration of state and updates to references, so that the
         application that invoked the resource does not need to manage the transition and
         does not need to be made aware of it.  Such migration needs to be implemented with
@@ -170,8 +169,8 @@
         </dd>
         <dt><dfn class="lint-ignore">Application-Directed Migration</dfn></dt>
         <dd>
-        The ability to move a running workload from one Computing Resources to another under
-        control of an application.  In this version of Migration, the controlling 
+        The ability to move a running workload from one Computing Resource to another under
+        control of an application.  In this version of Migration, the controlling
         application or the Workload itself needs to manage the orderly transfer of state
         from one Computing Resource to another, and may also have to explicitly update
         references, and will have to explicitly manage quality of service factors such
@@ -187,26 +186,26 @@
         <dd>
         A Computing Resource used directly by an end user, such as a laptop or desktop.
         Such a Computing Resource may also act as an Edge Resource if it provides
-        Computing Resources to other systems on the network. 
+        Computing Resources to other systems on the network.
         </dd>
         <dt><dfn class="lint-ignore">CDN</dfn></dt>
         <dd>
-        Content Distribution Network. 
-        A specialized network and set of computers targeted 
+        Content Distribution Network.
+        A specialized network and set of computers targeted
         at caching and delivering content with low latency.
         May also host Edge Resources.
         </dd>
         <dt><dfn class="lint-ignore">MEC</dfn></dt>
         <dd>
-        <a href="https://www.etsi.org/technologies/multi-access-edge-computing">Multi-access Edge Computing</a>. 
-        A form of Edge Computing 
-        based on Computing Resources 
+        <a href="https://www.etsi.org/technologies/multi-access-edge-computing">Multi-access Edge Computing</a>.
+        A form of Edge Computing
+        based on Computing Resources
         typically hosted within a cellular network's infrastructure.
         </dd>
         <dt><dfn class="lint-ignore">Workload</dfn></dt>
         <dd>
         A packaged definition of the compute work required to be executed
-        on a Computing Resource.  
+        on a Computing Resource.
         For example, a workload might be a container image, a script, or WASM.
         </dd>
       </dl>
@@ -215,7 +214,7 @@
     <section>
       <h2>Stakeholders and Business Models</h2>
       <p>Different stakeholders with an interest in edge computing will have different
-      motivations and priorities.  In this section we present an categorization of the different
+      motivations and priorities.  In this section we present a categorization of the different
       kinds of stakeholders and their business models.  As we present use cases and discuss
       proposals we can then relate these to the motivating drivers of different stakeholders.
       Note that some stakeholders may belong to more than one category.
@@ -234,13 +233,13 @@
             <td>BWSR</td>
             <td>Browser Vendor</td>
             <td>OSS - supported by other business (e.g. CSP, ads/search)</td>
-            <td>More applications can use web</td>
+            <td>More applications can use the web</td>
           </tr>
           <tr>
             <td>CSP</td>
             <td>Cloud Service Provider</td>
             <td>Usage or subscription, account based (service provider pays)</td>
-            <td>Offer edge computing service.</td>
+            <td>Offer edge computing service</td>
           </tr>
           <tr>
             <td>CDN</td>
@@ -304,26 +303,26 @@
           <dt>Render intensive application:</dt><dd>
               <p>
                 Render intensive applications are client side applications whose main task is to fetch content from the backend server then render that content in the front-end.
-                For example, news, social media Web applications, and mobile applications belongs to this category.
+                For example, news, social media Web applications, and mobile applications belong to this category.
               </p>
         </dd>
         <dt>Computing intensive application:</dt><dd>
               <p>
-                Computing intensive applications are client side applications whose main task is to do computing intensive work on the client. For example, mobile gaming applications 
-                need to calculate certain objects' location and other complex parameters based on user interaction then rendering in the client side. 
+                Computing intensive applications are client side applications whose main task is to do computing intensive work on the client. For example, mobile gaming applications
+                need to calculate certain objects' location and other complex parameters based on user interaction then rendering in the client side.
               </p>
         </dd>
         <dt>Hybrid application:</dt><dd>
               <p>
-                Hybrid applications are applications whose main task includes both rendering intensive work and computing intensive work. For example, modern e-commerce mobile applications 
+                Hybrid applications are applications whose main task includes both rendering intensive work and computing intensive work. For example, modern e-commerce mobile applications
                 leverage machine learning inference in the client side for AR/VR type user experiences. At the same time, e-commerce mobile applications need to fetch dynamic content based
                 on user preferences.
               </p>
         </dd>
         <dt>Mobile/static client:</dt><dd>
             <p>
-              Some client side applications remain static most of the time. For example, a camera for traffic monitoring and analysis does not require mobility support. 
-              On the other hand, some client side applications will change location continuously. For example, applications running on a connected vehicle or self driving vehicle 
+              Some client side applications remain at a static location most of the time. For example, a camera for traffic monitoring and analysis does not require mobility support.
+              On the other hand, some client side applications will change location continuously. For example, applications running on a connected vehicle or self driving vehicle
               will change location rapidly with the vehicle.
             </p>
         </dd>
@@ -331,36 +330,36 @@
 
 
       <p>
-        The use cases in the following sections are generally classified into the following categories based on the different work load type:
+        The use cases in the following sections are generally classified into the following categories based on different workload types.
       </p>
 
       <section>
-        <h3>Accelerated work loads</h3>
+        <h3>Accelerated workloads</h3>
           <p>
-            For this category of use cases, the client side application leverages the edge cloud for accelerating certain work loads by offloading those work loads to the edge.
+            For this category of use cases, the client side application leverages the edge cloud for accelerating certain workloads by offloading those workloads to the edge.
           </p>
           <section id="UC-CA">
             <h4>Cloud App (UC-CA)</h4>
                 <p>
-                  A Cloud App is a new form of application which utilizes cloud computing technology to move a client side application's work load to the Edge Cloud and/or a Central Cloud. The user interaction happens 
+                  A Cloud App is a new form of application which utilizes cloud computing technology to move a client side application's workload to the Edge Cloud and/or a Central Cloud. The user interaction happens
                   at the client device side and the computing and rendering process happens in the Edge Cloud side. This can accelerate the client side application's performance, lower the client's hardware requirements, and reduce cost.
                 </p>
-      
+
                 <p>
-                  As one example of a cloud App, Alibaba Group's Tmall Genie smart speaker leverages the Edge Cloud to offload its computing intensive and accelerated work load from the client side to the Edge Cloud.
-                </p> 
-      
+                  As one example of a cloud App, Alibaba Group's Tmall Genie smart speaker leverages the Edge Cloud to offload its computing intensive and accelerated workload from the client side to the Edge Cloud.
+                </p>
+
                 <p>
                   The client, the Central Cloud, and the Edge Cloud work together in a coordinated way for Cloud Apps. Typically, the control and orchestration function is located in the Central Cloud.
                   The computing intensive function is located in the Edge Cloud. The user interaction and display function is located in the client.
                 </p>
-      
+
                 <figure>
                   <img alt="CloudApp" src="images/CloudApp.png" width="600">
                   <figcaption>
                     Cloud App Architecture
                   </figcaption>
-                </figure> 
+                </figure>
           </section>
 
           <section id="UC-VR">
@@ -370,7 +369,7 @@
                 reduces delay since the Edge Resource is deployed near the location of the user.
               </p>
               <p>
-                Note: this could be generalized to "acceleration of low-latency tasks".  Some other examples might include 
+                Note: this could be generalized to "acceleration of low-latency tasks".  Some other examples might include
                 game physics simulation or CAD tools (in a business environment).  The latter might add confidentiality
                 constraints (a business user may want to offload to on-premises computers).
                 This pattern is for local communication to/from the client.
@@ -382,14 +381,14 @@
           <section id="UC-CG">
             <h4>Cloud Gaming (UC-CG)</h4>
               <p>
-                Cloud gaming is a game mode which leverages Cloud and/or Edge Resources. Under the operation mode of a cloud game, the games are running on the Cloud side, and the game images are compressed and transmitted to users by video stream through the network after rendering. 
+                Cloud gaming is a game mode which leverages Cloud and/or Edge Resources. Under the operation mode of a cloud game, the games are running on the Cloud side, and the game images are compressed and transmitted to users by video stream through the network after rendering.
                 The cloud gaming user can receive the game video stream and can send control commands to the cloud to control the game.
               </p>
 
-              <p>Taking a "Click-and-Play" scenario for example: since all the rendering and control commands are offloaded to an Edge Resource, the cloud game user doesn't need to install the game locally. The user can just click the game and then play with it smoothly. </p>
+              <p>Taking a "Click-and-Play" scenario for example, since all the rendering and control commands are offloaded to an Edge Resource, the cloud game user doesn't need to install the game locally. The user can just click the game and then play it easily.</p>
 
               <p>
-              By offloading the gaming work load to the edge and making full use of the computing power and low-latency network, the cloud gaming can provide more smoother experience.
+              By offloading the gaming workload to the edge and making full use of the computing power and low-latency network, the cloud gaming can provide a smoother experience.
               </p>
           </section>
 
@@ -413,20 +412,20 @@
             <section id="UC-VC">
               <h5>Online Video Conference (UC-VC)</h5>
                 <p>
-                  One special case of streaming acceleration consists of online video conference applications. Suppose that an online video conference system provides a real-time translation and subtitles service. 
-                  This will use AI/Machine learning technology and it is computing intensive. Also, the real time translation service is very delay sensitive. 
+                  One special case of streaming acceleration consists of online video conference applications. Suppose that an online video conference system provides a real-time translation and subtitles service.
+                  This will use AI/Machine learning technology and it is computing intensive. Also, the real time translation service is very delay sensitive.
                 </p>
                 <p>
                   The online video conference application could be installed on PC terminals or mobile terminals.
-                  For PC terminals, there is enough computing resources and enough disk storage to allow the installation of online video conference application. In this case, the computing
-                  intensive work could be done in the PC terminal and provides an ultra-low-latency user experience.
+                  For PC terminals, there is enough computing resources and enough disk storage to allow the installation of the online video conference application. In this case, the computing
+                  intensive work could be done in the PC terminal, providing an ultra-low-latency user experience.
                 </p>
-  
+
                 <p>
                   For mobile terminals, there is limited disk storage and limited computing capability, so it is not possible to run the computing intensive task on the mobile terminals. In this case,
                   the computing intensive task could be offloaded to the Edge, also providing a low-latency user experience.
                 </p>
-  
+
                 <p>
                   It is preferred that in this use case the online video conference application can offload the computing intensive task according to the terminal capability and Edge Resources availability.
                   The online video conference service provider can provide consistent user experience on different terminals.
@@ -437,23 +436,23 @@
           <section id="UC-MLA">
             <h4>Machine Learning Acceleration (UC-MLA)</h4>
               <p>
-                Machine learning inference can be done in the client side to reduce latency. W3C is working on <a href="https://www.w3.org/groups/wg/webmachinelearning">WebNN</a>  standard that 
-                allows client side developers to leverage the machine learning acceleration hardware that resides in the client side devices.
+                Machine learning inference can be done in the client side to reduce latency. W3C is working on the <a href="https://www.w3.org/groups/wg/webmachinelearning">WebNN</a> standard that
+                allows client side developers to leverage the machine learning acceleration hardware that resides in client side devices.
               </p>
-    
+
               <p>
-                The client side devices may have different hardware capabilities. For example, some mobile phones have very limited hardware resource and do not have a GPU. 
-                It is very difficult for this kind of client device to run machine learning code. 
-    
+                The client side devices may have different hardware capabilities. For example, some mobile phones have very limited hardware resources and do not have a GPU.
+                It is very difficult for this kind of client device to run machine learning code.
+
                 So in this scenario, it is preferred to offload machine learning code to the Edge Cloud. The user experience is greatly improved in this case.
               </p>
 
               <section id="UC-IVPU">
                 <h5>Image and Video Processing and Understanding (UC-IVPU)</h5>
                 <p>
-                  One special case of machine learning acceleration is image and video processing and understanding. For some mobile image/video processing applications, it is required to use machine learning 
+                  One special case of machine learning acceleration is image and video processing and understanding. For some mobile image/video processing applications, it is required to use machine learning
                   algorithms for image/video analysis and processing. This normally needs an NPU (Neural Processing Unit) chipset on the terminals for better performance.
-                  For terminals without an NPU chipset, it is preferred to offload the machine learning computing intensive work load to the Edge Cloud as this will provide a consistent user experience 
+                  For terminals without an NPU chipset, it is preferred to offload the machine learning computing intensive workload to the Edge Cloud as this will provide a consistent user experience
                   on different terminals.
                 </p>
               </section>
@@ -461,17 +460,16 @@
               <section id="UC-PWMP">
                 <h4>Professional Web-based Media Production (UC-PWMP)</h4>
                   <p>
-                    Another special case and example of machine learning acceleration is professional web-based media production. 
-                    Processing and rendering media is a complex task. For example, a video editing application needs to do image processing, video editing, audio editing, etc. 
-                    So it has high performance requirements.
+                    Another special case and example of machine learning acceleration is professional web-based media production.
+                    Processing and rendering media is a complex task. For example, a video editing application needs to do image processing, video editing, audio editing, etc., so it has high performance requirements.
                   </p>
-        
+
                   <p>
-                    Professional web-based media production relies on web-based media editing tools heavily, and may include AI-based operators which can be used to do cutting, eiting, transcoding and publishing of videos to the cloud. 
-                    Since the Edge Cloud has more powerful computing power and is close to user's location,  by offloading the expensive rendering process to the Edge, web appliations can render media more quickly 
+                    Professional web-based media production heavily relies on web-based media editing tools, and may include AI-based operators which can be used to do cutting, editing, transcoding, and publishing of videos to the cloud.
+                    Since the Edge Cloud has more computing power and is close to the user's location, by offloading the expensive rendering process to the Edge, web appliations can render media more quickly
                     and provide a better user experience.
                   </p>
-        
+
                   <figure>
                     <img alt="WebMedia" src="images/web_based_media.png" width="600">
                     <figcaption>
@@ -482,58 +480,57 @@
               <section id="UC-BR">
                 <h4>Background Rendering (UC-BR)</h4>
                 <p>As a special case of <a href="#UC-PWMP">UC-PWMP</a>
-                 and <a href="#UC-IVPU">UC-IVPU</a>, a user may want to 
+                 and <a href="#UC-IVPU">UC-IVPU</a>, a user may want to
                  execute a background task, for example for rendering
                  or machine training.  This task would execute even
                  while the initiating web application is not active.  Such
                  tasks are not latency sensitive and so could also be
                  performed in the cloud, but the user may wish to
                  execute them on hardware under their control for
-                 privacy or confidentiality reasons. 
+                 privacy or confidentiality reasons.
                 </p>
           </section>
 
           <section>
             <h3>Robustness of Workload Acceleration for Certain Applications</h3>
               <p>
-                For applications which offload some parts of its functionalities to the Edge Cloud, if the Edge Cloud is not available due to client mobility or other reasons,
-                it is preferred that the functionalities could be handed over back to the client when necessary. More complex rules could be designed to improve the robustness of the application.
+                For applications which offload some parts of its functionality to the Edge Cloud, if the Edge Cloud is not available due to client mobility or other reasons,
+                it is preferred that the functionality could be handed over back to the client when necessary. More complex rules could be designed to improve the robustness of the application.
               </p>
-              
+
               <section id="UC-LVB">
                 <h4>Live video broadcasting mobile application (UC-LVB)</h4>
-                 
+
                   <p>
-                    One example of such a use cases is: for mobile applications (for example, live video broadcasting mobile applications) that leverage the Edge Cloud for computing and/or machine learning 
-                    acceleration, when certain conditions (Edge Cloud availability, network condition etc.) are not met for work load acceleration by offloading, they shall have the ability to migrate work 
-                    loads back to the client side to ensure the robustness and availability of the application.
+                    One example of such a use case is: for mobile applications (for example, live video broadcasting mobile applications) that leverage the Edge Cloud for computing and/or machine learning
+                    acceleration, when certain conditions (Edge Cloud availability, network conditions, etc.) are not met for workload acceleration by offloading, they could have the ability to migrate workloads back to the client side to ensure the robustness and availability of the application.
                   </p>
               </section>
 
               <section id="UC-ALPR">
                 <h4>Automatic License Plate Recognition (UC-ALPR)</h4>
                 <p>
-                  Another example is automatic license plate recognition. For automatic license plate recognition applications, offline processing can provide 90% recognition rate. Online processing on the Edge will improve the recognition rate to 99%. 
+                  Another example is automatic license plate recognition. For such applications, offline processing can provide 90% recognition rate. Online processing on the Edge improves the recognition rate to 99%.
                   It is preferred to offload the license plate recognition computing intensive task to the Edge when the network connection is stable. If the network condition is not stable or broken, the offloaded computing
                   intensive task could move back to the terminals to guarantee the availability of the service.
                 </p>
               </section>
-          </section> 
+          </section>
       </section>
-      
+
 
       <section>
         <h3>IoT workloads</h3>
           <p>
-          In general, there are many opportunities for IoT devices 
+          In general, there are many opportunities for IoT devices
           to offload work to another computer, since they are generally
-          constrained in processing power, energy, or both.  
-          Video processing however is of special interest because of its 
+          constrained in processing power, energy, or both.
+          Video processing however is of special interest because of its
           high data and processing
           requirements and privacy constraints.
           In this case the offload source is not necessarily a browser
           or web application but the process may be indirectly managed by one,
-          and the capabilities provided by the proposed standard (e.g. a 
+          and the capabilities provided by the proposed standard (e.g., a
           discoverable compute utility) can also be used directly by
           an IoT device.
           </p>
@@ -545,9 +542,9 @@
                 to another computer.  However, the video is sensitive private data so the user would prefer that
                 it does not leave the user's premises, and would like to offload the processing to an Edge Resource,
                 which in this case may be an existing
-                desktop computer or an enhanced gateway computer (e.g. provided by an ISP).  Latency may also be a concern (the robot needs the 
+                desktop computer or an enhanced gateway computer (e.g., provided by an ISP).  Latency may also be a concern, as the robot needs the
                 results immediately to make navigation decisions, for example to avoid a wire or other obstacle
-                on the floor).
+                on the floor.
                 </p>
           </section>
           <section id="UC-CM">
@@ -562,7 +559,7 @@
                 Cloud and perform processing there; instead they want to run
                 the computation on an Edge Resource under their direct control.  In this case, the
                 parent also wants to run the processing as a background
-                task that executes even when the browser/web app that 
+                task that executes even when the browser/web app that
                 invoked it is closed.
               </p>
           </section>
@@ -573,18 +570,18 @@
       <section id="UC-PW">
         <h3>Persistent workloads (UC-PW)</h3>
           <p>
-            In some cases it may be desireable to start a task from a browser that continues to run even when the 
+            In some cases it may be desireable to start a task from a browser that continues to run even when the
             browser application is not active.  This could be used to monitor a condition for example and send
             a notification when that condition is met.  As a sub-category of this use case, the offloaded task
             might be used to monitor IoT devices and instead of or in addition to sending a notification, it
-            might be used for automation. 
+            might be used for automation.
             Such an offloaded task might also be used to execute long-running computational
             tasks such as machine learning or data indexing.
         </p>
         <p>
             Persistent tasks require a mechanism to manage their lifetime using expiry dates or explicit controls.
             In the case of applying this to IoT orchestration, there is also the issue of granting access rights
-            to such offloaded tasks, for example access to a LAN, to specific IoT devices on that LAN, and to the 
+            to such offloaded tasks, for example access to a LAN, to specific IoT devices on that LAN, and to the
             data they generate.
         </p>
       </section>
@@ -598,44 +595,44 @@
       <section>
         <h2>Common approaches for offloading</h2>
         <p>
-          Currently, there are two common approaches for offloading. One is to send the code in the request from the client to the Edge Resource, the other is to have the Edge Resource fetch the codes from file repositories on the Edge and execute them. Both work fine, but both approaches also have some downsides.
+          Currently, there are two common approaches for offloading. One is to send the code in the request from the client to the Edge Resource, the other is to have the Edge Resource fetch the code from file repositories on the Edge and execute them. Both work fine, but both approaches also have some downsides.
         </p>
-  
+
         <dl>
-          <dt>Sending codes from client to edge</dt>
-          <dd> 
-          <p>In this approach, the client sends the local code to the Edge Resource which then executes the code on the Edge side. The downside is obvious: since more data is transferred in the request it may cause network latency. Handling more data will also put more strain on the resource-restricted end device. Meanwhile, some codes are sensitive, data security is also an big issue.  </p>
+          <dt>Sending code from client to edge</dt>
+          <dd>
+          <p>In this approach, the client sends the local code to the Edge Resource, which then executes the code on the Edge side. The downside is obvious: since more data is transferred in the request it may cause network latency. Handling more data will also put more strain on the resource-constrained end device. Meanwhile, some code is sensitive, data security is also an big issue.</p>
           </dd>
-          <dt>Fetching codes from file repositories and executing on edge</dt>
+          <dt>Fetching code from file repositories and executing on the edge</dt>
           <dd>
           <figure>
             <img alt="EdgeFetch" src="images/edge_fetching_codes.png" width="600">
             <figcaption>
-              Fetching codes from file repositories
+              Fetching code from file repositories
             </figcaption>
           </figure>
-  
+
           <p>In this approach, the client leverages a user-defined offloading library to send proper parameters to the Edge Resource.  The Edge Resource will then fetch the specified code from repositories and then execute the code.</p>
-  
+
           <p>The downside of this approach is that additional file repositories are needed and the developers have to upload the code to the repository and make sure the local and the Edge have the same version of the code. </p>
 
           <p>Meanwhile, since the offloading library plays an important role in offloading, developers need to create a robust offloading policy to discover and connect with Edge Resources, decide which parts of the code can be offloaded, and the time to offload. This will put more strain on the developer and affect the overall programming experience and the productivity.</p>
           </dd>
         </dl>
-          
+
       </section>
 
 
       <section>
           <h2>Conclusion</h2>
           <p>
-              The two approaches discussed above are mostly similar. The main difference is the way code is sent to the edge. However, in addition to the downsides mentioned, some common issues or pain points are still remain and need to be addressed. 
+              The two approaches discussed above are mostly similar. The main difference is the way code is sent to the edge. However, in addition to the downsides mentioned, some common issues or pain points still remain and need to be addressed.
           </p>
               <ul>
-                <li>Discrepancies between the client runtime and the Edge runtime may cause failures, as well as the runtime differences between one Edge Resource and another. So a unified runtime needs to be considered. A WebAssembly runtime may be a good choice.</li>
+                <li>Discrepancies between the client runtime and the Edge runtime may cause failures, as well as differences in the runtime between one Edge Resource and another. So a unified runtime needs to be considered. A WebAssembly runtime may be a good choice.</li>
                 <li>Capabilities for discovering and connecting with Edge Resources are needed. </li>
                 <li>Some parts of the code might be sensitive, and the developer might not want it to be sent over the internet. Capabilities for developers to configure which parts can be offloaded are needed.</li>
-                <li>When certain condition are met, for example, if there is no Edge Resource in proximity to the user or the internet is lost, codes should be executed locally instead of offloaded. That is to say, the developer will need to know what might be offloaded to a server but does not need to decide or care about when it is offloaded. </li>
+                <li>When certain conditions are met, such as if there is no Edge Resource in proximity to the user or the internet is lost, code should be executed locally instead of offloaded. That is to say, the developer will need to know what might be offloaded to a server but does not need to decide or care about when it is offloaded.</li>
                 <li>Security and privacy are important, so secure communication mechanisms are needed.</li>
               </ul>
 
@@ -689,7 +686,7 @@
             <tr>
               <td>Scalability</td>
               <td>Efficient implementation in a virtualized cluster environment
-                  (i.e. a Cloud system) should be achievable.</td>
+                  (i.e., a Cloud system) should be achievable.</td>
               <td>
                 <a href="#UC-CA">UC-CA</a><br/>
                 <a href="#UC-CG">UC-CG</a><br/>
@@ -799,7 +796,7 @@
             </tr>
             <tr>
               <td>Control</td>
-              <td>The use of resources should ultimately be under the 
+              <td>The use of resources should ultimately be under the
                   control of the entity responsible for paying for their use.</td>
               <td>
                 <a href="#UC-CA">UC-CA</a><br/>
@@ -824,7 +821,7 @@
     <section>
       <h3>Detailed Requirements</h3>
       <p>
-        Some more detailed requirements are listed below, 
+        Some more detailed requirements are listed below,
         cross-referenced with related use cases and related
         high-level requirements.
       </p>
@@ -841,9 +838,9 @@
           <tbody>
             <tr>
               <td>Performance</td>
-              <td>R1: Client Offload.</td>
-              <td>Client should be able to offload computing intensive work 
-                  to an edge resource.</td>
+              <td>R1: Client Offload</td>
+              <td>Clients should be able to offload computing intensive work
+                  to an Edge Resource.</td>
               <td>
                 <a href="#UC-CA">UC-CA</a><br/>
                 <a href="#UC-VR">UC-VR</a><br/>
@@ -862,11 +859,11 @@
             </tr>
             <tr>
               <td>Resiliency</td>
-              <td>R2a: Application-Directed Migration.</td>  
-              <td>The application should be able to explicitly manage migration 
-                  of work between computing resources.
-                  This may include temporarily running a workload on 
-                  multiple computing resources to hide transfer latency.
+              <td>R2a: Application-Directed Migration</td>
+              <td>The application should be able to explicitly manage migration
+                  of work between Computing Resources.
+                  This may include temporarily running a workload on
+                  multiple Computing Resources to hide transfer latency.
               </td>
               <td>
                 <a href="#UC-CA">UC-CA</a><br/>
@@ -886,12 +883,12 @@
             </tr>
             <tr>
               <td>Resiliency</td>
-              <td>R2b: Live Migration.</td>
-              <td>The edge cloud should be able to transparently migrate 
-                live (running) work between computing resources.
-                This includes between edge resources, cloud resources, 
+              <td>R2b: Live Migration</td>
+              <td>The Edge Cloud should be able to transparently migrate
+                live (running) work between Computing Resources.
+                This includes between Edge Resources, Cloud Resources,
                 and back to the client, as necessary.
-                If the workload is stateful, 
+                If the workload is stateful,
                 this includes state capture and transfer.</td>
               <td>
                 <a href="#UC-CA">UC-CA</a><br/>
@@ -901,9 +898,9 @@
             </tr>
             <tr>
               <td>Flexibility</td>
-              <td>R3: Discovery.</td>
-              <td>A client should be able to dynamically enumerate available 
-                  edge resources.</td>
+              <td>R3: Discovery</td>
+              <td>A client should be able to dynamically enumerate available
+                  Edge Resources.</td>
               <td>
                 <a href="#UC-CA">UC-CA</a><br/>
                 <a href="#UC-VR">UC-VR</a><br/>
@@ -922,13 +919,13 @@
             </tr>
             <tr>
               <td>Flexibility</td>
-              <td>R4: Selection.</td>
-              <td>A client should be able to select between available resources, 
+              <td>R4: Selection</td>
+              <td>A client should be able to select between available resources,
                   including making a decision about whether offload is appropriate
-                  (e.g. running on the client may be the best choice).
+                  (e.g., running on the client may be the best choice).
                   This selection may be automatic or application-directed,
                   and may require metadata or measurements
-                  of the performance and latency of edge resources,
+                  of the performance and latency of Edge Resources,
                   and may be static or dynamic.
                   To do: perhaps break variants down into separate sub-requirements.
                   Also, it needs to be clear about how this is different
@@ -952,10 +949,10 @@
             </tr>
             <tr>
               <td>Flexibility</td>
-              <td>R5: Packaging.</td>
-              <td>A workload should be packaged so it can be executed on 
-                a variety of edge resources.
-                This means either platform independence OR a means to 
+              <td>R5: Packaging</td>
+              <td>A workload should be packaged so it can be executed on
+                a variety of Edge Resources.
+                This means either platform independence OR a means to
                 negotiate which workloads can run where.</td>
               <td>
                 <a href="#UC-CA">UC-CA</a><br/>
@@ -975,11 +972,11 @@
             </tr>
             <tr>
               <td>Flexibility</td>
-              <td>R6: Persistence.</td>
+              <td>R6: Persistence</td>
               <td>It should be possible for a workload to be run "in the background",
-                possibly event-driven, even if the client is not active. 
+                possibly event-driven, even if the client is not active.
                 This also implies lifetime management (cleaning
-                up workloads under some conditions, 
+                up workloads under some conditions,
                 such as if the client has not connected for a certain amount
                 of time, etc.)</td>
               <td>
@@ -1003,7 +1000,7 @@
               <td>R7: Confidentiality and Integrity</td>
               <td>The client should be able to control and protect the data used
                 by an offloaded workload.
-                Note: this may result in constraints upon the selection of offload targets, but 
+                Note: this may result in constraints upon the selection of offload targets, but
                 it also means data needs to be protected in transit, at rest, etc.
               </td>
               <td>
@@ -1028,11 +1025,11 @@
               <td>The client should be able to control
                   the use of resources by an
                   offloaded workload on a per-application basis.
-                Note: If an edge resource has a usage charge, for example, 
-                a client may want to set quotas on offload, 
+                Note: If an Edge Resource has a usage charge, for example,
+                a client may want to set quotas on offload,
                 and some applications may need more resources than others.
-                This may also require a negotiation, 
-                e.g. a workload may have minimum requirements,
+                This may also require a negotiation,
+                e.g., a workload may have minimum requirements,
                 making offload mandatory on limited clients.
                 This is partially about QoS as it relates to performance
                 (making sure a minimum amount of resources is available)
@@ -1082,7 +1079,7 @@
               <td>Compatibility</td>
               <td>R10: Stateful</td>
               <td>It should be possible to run stateful workloads,
-                  to be compatible with existing client-side 
+                  to be compatible with existing client-side
                   programming model expectations.
                 </td>
               <td>
@@ -1128,7 +1125,7 @@
               <td>R12: Asynchronous</td>
               <td>The API for communicating with a running workload
                   should be non-blocking (asynchronous) to hide the
-                  latency of remote communication and allow the 
+                  latency of remote communication and allow the
                   main (user interface) thread to run in parallel with the
                   workload (even if the workload is being run on the client).
                 </td>
@@ -1177,10 +1174,10 @@
               <td>A workload should have (managed) access to accelerated
                   computing resources when appropriate, such as AI accelerators.
                   Note: Since the availability of these resources may vary between
-                  compute resources these need to be taken into account
-                  when estimating performance and selecting a compute
-                  resource to use for offload.  Access to such resources
-                  should use web standards, e.g. standard WASM/WASI APIs.
+                  Computing Resources these need to be taken into account
+                  when estimating performance and selecting a Computing
+                  Resource to use for offload.  Access to such resources
+                  should use web standards, e.g., standard WASM/WASI APIs.
                 </td>
               <td>
                 <a href="#UC-CA">UC-CA</a><br/>
@@ -1210,8 +1207,8 @@
 
         <section>
           <h3>Seamless code sharing across client/edge/cloud</h3>
-          <p>This architecture allows the client, Edge, and the Central Cloud to share a common code running environment which allows the 
-          task running in either client, edge, cloud or both in a coordinated way. 
+          <p>This architecture allows the client, Edge, and the Central Cloud to share a common code running environment which allows the
+          task running in either client, edge, cloud or both in a coordinated way.
         </p>
 
           <p>
@@ -1226,14 +1223,14 @@
           </figure>
 
           <p>
-            In this architecture, the code of the work load in the client side could be offloaded to the Edge Cloud and can also be handed over to Central Cloud and handed over back to client.
+            In this architecture, the code of the workload in the client side could be offloaded to the Edge Cloud and can also be handed to the Central Cloud and handed back to client.
             The high-level procedure is as follows:
           </p>
           <ul>
           <li>
-            The client side application encapsulates offloaded work load code into an offloaded code module and loads the code module using specific APIs for the runtime environment.
+            The client side application encapsulates offloaded workload code into an offloaded code module and loads the code module using specific APIs for the runtime environment.
             There may be different types of runtime environment, for example, WebAssembly or JavaScript runtimes.
-            The offloaded work load will be written according to the specific runtime.
+            The offloaded workload will be written according to the specific runtime.
           </li>
 
           <li>
@@ -1249,12 +1246,12 @@
           </li>
 
           <li>
-            The target Edge Cloud/Central Cloud executes the offloaded work load and returns the result to the client application.
+            The target Edge Cloud/Central Cloud executes the offloaded workload and returns the result to the client application.
           </li>
 
           <li>
-            If offloading is not feasible in certain conditions, for example, if the network connection between the client and Edge Cloud is not stable or 
-            there is no enough resources in the Edge Cloud, the offloaded work load should handover back to the client side to ensure the availability of the client application.
+            If offloading is not feasible in certain conditions, for example, if the network connection between the client and Edge Cloud is not stable or
+            there are not enough resources in the Edge Cloud, the offloaded workload should handover back to the client side to ensure the availability of the client application.
           </li>
           </ul>
 
@@ -1263,11 +1260,11 @@
       <section>
         <h3>Distributed Workers</h3>
         <p>The Web already has a set of standards for managing additional
-        threads of computation managed by application 
+        threads of computation managed by application
         code loaded into the browser: Web and Service Workers.
         Workers already support a message-passing style of communication
         which would allow them to execute remotely.
-        This architectural option proposes extending workers to support
+        This architectural option proposes extending Workers to support
         edge computing as follows:
         </p>
         <ul>
@@ -1292,7 +1289,7 @@
             The user would have controls in the browser to control
             this rule, including the ability to specify specific offload
             targets or to force local execution when appropriate.
-            Note: the reason it is suggested that the browser makes 
+            Note: the reason it is suggested that the browser makes
             the decision and not the application is to prevent fingerprinting
             and associated privacy risks.
             Metadata about available Compute Utilities might otherwise
@@ -1301,18 +1298,18 @@
             still supporting intelligent selection of offload targets.
         </li>
         <li>Once a Compute Utility is selected, the browser would
-            automatically (transparent to the application) use the 
+            automatically (transparent to the application) use the
             network API of the Compute Utility to load and execute the
-            workload for the Worker.  
+            workload for the Worker.
             Note that in the existing Worker API, a URL of
-            a JavaScript workload is provided to the Worker.  
+            a JavaScript workload is provided to the Worker.
         </li>
         <li>The Compute Utility itself would be responsible for downloading
-            the workload, it would not have to be downloaded to the 
+            the workload, it would not have to be downloaded to the
             browser and then uploaded.  Also, a WASM workload could be used,
             bootstrapping from the standard JavaScript workload.
             In general, the
-            workload execution environment should be the same as the 
+            workload execution environment should be the same as the
             normal Worker execution environment.  However, access to
             accelerators to support performance and other advanced capabilities
             will become more important in this context.
@@ -1321,9 +1318,9 @@
 
         <p>
           The proposed high level architecture is shown in the following figure.
-          The browser discovers Compute Utilities using 
+          The browser discovers Compute Utilities using
           a Discovery mechanism. Discovery services in each discovered
-          Compute Utility return metadata, which then allows the 
+          Compute Utility return metadata, which then allows the
           selection of a Compute Utility for each workload.
           A Workload Management service is then
           used to load and run a packaged workload for the worker.
@@ -1341,13 +1338,13 @@
           <h2>Standardization Proposals</h2>
             <section>
               <h3>WebAssembly as unified runtime</h3>
-                <p> This proposal proposes to extend WebAssembly runtime and use it in both client side and Edge Cloud side as a unified runtime.</p>
-                <figure> 
+                <p> This proposal proposes to extend the WebAssembly runtime and use it in both client side and Edge Cloud as a unified runtime.</p>
+                <figure>
                     <img src="images/WebAssemblyRuntime.png" alt="WebAssemblyRuntime" width="600">
                         <figcaption>
                           WebAssembly as a Unified Runtime Architecture
                         </figcaption>
-                </figure> 
+                </figure>
 
                 <p>
                   The proposed solution includes the following parts:
@@ -1357,14 +1354,14 @@
                 <dt>Load WASM code</dt>
                 <dd>
                     <p>
-                      The client loads the WebAssembly code by invoking a standard API. This API should indicate that the WASM code could be offloaded to Edge cloud when certain condition is met.
+                      The client loads the WebAssembly code by invoking a standard API. This API should indicate that the WASM code could be offloaded to Edge cloud when certain conditions are met.
                       This API should also set the destination Edge cloud's location identifier.
                     </p>
                 </dd>
                 <dt>Offload WASM code to Edge Cloud</dt>
                 <dd>
                     <p>
-                      The client side's WebAssembly runtime executes the WASM code and when certain condition is meet, it offload the WASM code to the Edge cloud.
+                      The client side's WebAssembly runtime executes the WASM code and when certain conditions are met, it offloads the WASM code to the Edge cloud.
                     </p>
                 </dd>
                 <dt>Run WASM code on Edge cloud</dt>
@@ -1381,26 +1378,26 @@
                 </dd>
                 </dl>
                 </section>
-              
+
               <section id="PotentialStandards">
                 <h3>Potential Standards</h3>
                   <dl>
                   <dt>JavaScript API to specify workloads:</dt>
                     <dd>
-                      This JavaScript API is to be used by a web application 
+                      This JavaScript API is to be used by a web application
                       to specify a workload.
-                      It indicates this workload may be offloaded to the 
-                      edge cloud when certain conditions are meet.
-                      The standardization of this API is required 
-                      since different implementations should implement this API 
-                      in the same way to make sure that the developers have the 
+                      It indicates this workload may be offloaded to the
+                      edge cloud when certain conditions are met.
+                      The standardization of this API is required
+                      since different implementations should implement this API
+                      in the same way to make sure that application developers have the
                       same user experience.
                     </dd>
 
                   <dt>Communication mechanism and protocol between client and Edge Cloud:</dt>
                     <dd>
                       The communication mechanism, the communication protocol,
-                      and the interface (network API) between the client side 
+                      and the interface (network API) between the client side
                       and the Edge cloud should be standardized to enable
                       the interoperability of different Edge Cloud providers.
                     </dd>
@@ -1408,9 +1405,9 @@
                   <dt>Edge Cloud availability and network condition discovery:</dt>
                     <dd>
                       The workload should only be offloaded when certain conditions
-                      are met. 
-                      These condition may include Edge Cloud availability 
-                      and network condition.
+                      are met.
+                      These condition may include Edge Cloud availability
+                      and network conditions.
                     </dd>
                  </dl>
 
@@ -1423,9 +1420,9 @@
                 <dl>
                   <dt>Offloading policy:</dt>
                     <dd>
-                      This proposal recommends that the offloading policy is not 
-                      standardized to allow flexible implementation by 
-                      different vendors. 
+                      This proposal recommends that the offloading policy is not
+                      standardized to allow flexible implementation by
+                      different vendors.
                     </dd>
                 </dl>
               </section>
@@ -1434,8 +1431,8 @@
                 <h3>Conclusion & Recommendations for the Way Forward</h3>
 
                 <p>
-                  As analyzed in the <a href="#gap"> gap analysis section</a> and in the <a href="#PotentialStandards">potential standards</a>  section, the proposed potential standards work is to specify a standardized 
-                  common mechanism to offload code to the Edge Cloud. 
+                  As analyzed in the <a href="#gap"> gap analysis section</a> and in the <a href="#PotentialStandards">potential standards</a>  section, the proposed potential standards work is to specify a standardized
+                  common mechanism to offload code to the Edge Cloud.
                   There may be multiple potential solutions and some of them may be related to <a href="https://www.w3.org/wasm/">WebAssembly</a> and some may be related to web platform APIs.
                 </p>
 
@@ -1446,33 +1443,33 @@
                 </ul>
 
                 <p>
-                  The disadvantage of option 1 is that if divided the work to different related working groups in W3C, it would be very difficult to maintain a unified architecture.
+                  The disadvantage of option 1 is that if the work divided across different working groups in W3C, it would be very difficult to maintain a unified architecture.
                 </p>
 
                 <p>
                   The advantage of option 2 is that it would be easier to maintain a unified architecture in one working group.
-                  Considering this, it is preferred to establish a new working group (Option 2) to focus on the standardized solution development. The proposed new working group 
-                  could develop the standard solution architecture firstly. If the standard solution architecture require extension of current W3C standards, the new working group could work together with related 
-                  working groups (for example,<a href="https://www.w3.org/wasm/">WebAssembly Working Group</a> etc.) to develop the extensions. 
+                  Considering this, it is preferred to establish a new working group (Option 2) to focus on the standardized solution development. The proposed new working group
+                  could firstly develop a standard solution architecture. If the standard solution architecture requires extension of current W3C standards, the new working group could work together with related
+                  working groups (for example, <a href="https://www.w3.org/wasm/">WebAssembly Working Group</a> etc.) to develop the extensions.
                </p>
 
                <p>
-                 The proposed next step is to draft the charter which is used to establish the proposed new working group.
+                 The proposed next step is to draft a charter to establish the proposed new working group.
                </p>
 
               </section>
-          
+
     </section>
 
     <section>
       <h2>Contributors</h2>
           <p>
             Feiwei Lei,  <a href="http://www.alibabagroup.com/en/global/home">Alibaba Group</a>
-          </p>       
-          
+          </p>
+
           <p>
             Jingyu Yang,  <a href="http://www.alibabagroup.com/en/global/home">Alibaba Group</a>
-          </p>    
+          </p>
 
           <p>
             Wenming Wang,  <a href="https://www.bytedance.com/">ByteDance</a>
@@ -1484,10 +1481,10 @@
 
           <p>
             Lei Zhao, <a href="https://www.chinamobileltd.com">China Mobile </a>
-          </p>                              
+          </p>
     </section>
 
-    
+
 </body>
 
 </html>
